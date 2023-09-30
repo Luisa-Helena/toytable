@@ -1,0 +1,28 @@
+body{
+    margin:0; 
+    padding:0;
+    font-family:sans-serif;
+}
+.container{
+    position: relative; 
+    width:1200px; 
+    height:40px; 
+    margin:20px auto; 
+}
+.container .box{
+    position:relative; 
+    width: calc(400px - 30px);
+    height: calc(420px - 30px);
+    background: #06495ED0;
+    float:left;
+    margin:15px;
+    box-sizing: border-box;
+    border-radius: 35px;
+}
+        
+.form-group [type="button"] {
+      color: #000000; /*cor da letra do botao*/
+      cursor: pointer;
+      border-radius: 40px;
+    }
+   

@@ -1,0 +1,14 @@
+.mensagem-erro {
+    color: white;
+    background-color: rgba(231, 0, 0, 0.7);
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+    position: absolute;
+    top: -15px; /* Defina a posição vertical desejada, por exemplo, 20px */
+    left: 50%; /* Centraliza a caixa horizontalmente */
+    transform: translateX(-50%); /* Centraliza a caixa horizontalmente */
+    border: 2px solid rgb(250, 70, 70);
+    border-radius: 20px;
+    width: 375px;
+}

@@ -1,0 +1,68 @@
+.input-imagem{
+    padding: 8px;
+    border-radius: 10px;
+    width: 350px;
+    height:10px;
+    top: 122px;
+    left:370px;
+    position: absolute;
+  }
+
+.input-imagem1{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top: 45px;
+  left:370px;
+  position: absolute;
+}
+
+.input-imagem2{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top: 115px;
+  left:370px;
+  position: absolute;
+}
+
+.ver-senha-icon {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  margin-left: 5px; /* Ajuste a margem esquerda para separar do campo de senha */
+}
+
+.ver-senha-icon-nova {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  margin-left: 5px; 
+
+}
+.ver-senha-icon-confirma {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  margin-left: 5px; 
+
+}
+
+.ver-senha-icon-cadastro {
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      margin-left: 5px; 
+    
+}
+.input-imagem3{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top: 282px;
+  left:370px;
+  position: absolute;
+}

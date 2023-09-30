@@ -1,0 +1,22 @@
+.form-container{
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+    padding: 40px;
+    border-radius: 22px;
+    height: 250px;
+    top:-5px;
+    background-color: #CADFFB;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    background-color: #3E5F8A;
+    width: 475px;
+    height: 325px;
+    top: 25px;
+    right: 25px;
+    border-radius: 22px;
+    z-index: -1;
+}

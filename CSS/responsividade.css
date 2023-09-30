@@ -1,0 +1,104 @@
+@media (max-width: 1366px) and (max-height:768px){
+        /*CAIXA_DADOS_PROFESSOR.CSS*/
+        .caixa {
+            margin: 0 auto;
+            position: relative;
+            padding: 30px; /* Reduzido o espaço interno para caber melhor */
+            display: flex;
+            flex-direction: column;
+            border-radius: 18px; /* Levemente reduzido o raio da borda */
+            width: 500px; /* Ajustado um pouco para caber melhor */
+            height: auto; /* Deixado 'auto' para permitir altura flexível */
+            top: 0; /* Removido o ajuste superior */
+            left: 0; /* Removido o ajuste esquerdo */
+            background-color: #CADFFB;
+            font-family: 'Graduate', sans-serif; /* Adicionado aspas simples e declarado 'sans-serif' como alternativa */
+            font-size: 20px; /* Reduzido para melhor legibilidade */
+            font-weight: bold;
+          }
+          
+          .caixa-sombra {
+            background-color: #CADFFB;
+            position: absolute;
+            width: 400px; /* Ajustado um pouco para caber melhor */
+            height: auto; /* Deixado 'auto' para permitir altura flexível */
+            top: 0; /* Removido o ajuste superior */
+            left: 0; /* Removido o ajuste esquerdo */
+            z-index: -1;
+            border-radius: 18px; /* Levemente reduzido o raio da borda */
+          }
+          
+          .caixa::before {
+            content: '';
+            position: absolute;
+            background-color: #3E5F8A;
+            width: 480px; /* Ajustado um pouco para caber melhor */
+            height: 280px; /* Reduzido para caber melhor */
+            top: 20px; /* Ajustado para melhor posição */
+            right: 20px; /* Ajustado para melhor posição */
+            border-radius: 18px; /* Levemente reduzido o raio da borda */
+            z-index: -1;
+          }
+          
+          .informacoes {
+            display: flex;
+            align-items: center;
+            font-size: 18px; /* Reduzido para melhor legibilidade */
+            font-weight: bold;
+          }
+          
+        /* fim do cAIXA_DADOS_PROFESSOR.CSS*/
+    
+    }
+    @media (min-width: 1280px) and (max-height:768px){
+        .caixa {
+            margin: 0 auto;
+            position: relative;
+            padding: 30px; /* Reduzido o espaço interno para caber melhor */
+            display: flex;
+            flex-direction: column;
+            border-radius: 18px; /* Levemente reduzido o raio da borda */
+            width: 300px; /* Ajustado um pouco para caber melhor */
+            height: auto; /* Deixado 'auto' para permitir altura flexível */
+            top: 0; /* Removido o ajuste superior */
+            left: 0; /* Removido o ajuste esquerdo */
+            background-color: #CADFFB;
+            font-family: 'Graduate', sans-serif; /* Adicionado aspas simples e declarado 'sans-serif' como alternativa */
+            font-size: 20px; /* Reduzido para melhor legibilidade */
+            font-weight: bold;
+          }
+          
+          .caixa-sombra {
+            background-color: #CADFFB;
+            position: absolute;
+            width: 300px; /* Ajustado um pouco para caber melhor */
+            height: auto; /* Deixado 'auto' para permitir altura flexível */
+            top: 0; /* Removido o ajuste superior */
+            left: 0; /* Removido o ajuste esquerdo */
+            z-index: -1;
+            border-radius: 18px; /* Levemente reduzido o raio da borda */
+          }
+          
+          .caixa::before {
+            content: '';
+            position: absolute;
+            background-color: #3E5F8A;
+            width: 380px; /* Ajustado um pouco para caber melhor */
+            height: 180px; /* Reduzido para caber melhor */
+            top: 20px; /* Ajustado para melhor posição */
+            right: 20px; /* Ajustado para melhor posição */
+            border-radius: 18px; /* Levemente reduzido o raio da borda */
+            z-index: -1;
+          }
+          
+          .informacoes {
+            display: flex;
+            align-items: center;
+            font-size: 12px; /* Reduzido para melhor legibilidade */
+            font-weight: bold;
+          }
+          
+        /* fim do cAIXA_DADOS_PROFESSOR.CSS*/
+    
+    }
+    

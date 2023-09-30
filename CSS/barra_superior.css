@@ -1,0 +1,15 @@
+.header{
+    width: 100%; /* A barra ocupará toda a largura do contêiner que a envolve */
+    height: 70px;
+    background: #CADFFB;
+    justify-content: left;
+    background-image: url("imagens/logo.png");
+    background-repeat: no-repeat;
+    background-position:left; /* Ajusta a posição horizontal da imagem */
+    background-size: 100px;
+    background-position-y: -15px;
+    background-position-x: 10px;
+    margin-bottom: 0px;
+    position: absolute;
+    z-index: 4;
+}

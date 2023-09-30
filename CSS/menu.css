@@ -1,0 +1,68 @@
+.menu{
+    background-color: #A7BCF7;
+    width: 270px;
+    height: 100vh;
+    position: absolute;  
+    top: 0;
+    left: 0;
+    background-image: url("imagens/foto.png");
+    background-repeat: no-repeat;
+    background-position:left; /* Ajusta a posição horizontal da imagem */
+    background-size: 170px;
+    background-position-y: 115px;
+    background-position-x: 52px;
+    font-family: Graduate;
+    font-size: 25px; 
+}
+
+.botao-perfil [type="button"]{
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    border-radius: 22px;
+    height: 40px;
+    width: 180px;
+    background-color: #5783BC;
+    margin-top: 415px;
+    margin-bottom: 50px;
+    position: relative;
+    font-family: Graduate;
+    /* font-weight: bold; */
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.botao-turma [type="button"]{
+    border: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 22px;
+    height: 40px;
+    width: 180px;
+    background-color: #5783BC;
+    margin-bottom: 50px;
+    font-family: Graduate;
+    /* font-weight: bold; */
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.botao-jogo [type="button"]{
+    border: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 22px;
+    height: 40px;
+    width: 180px;
+    background-color: #5783BC;
+    margin-bottom: 50px;
+    font-family: Graduate;
+    /* font-weight: bold; */
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+    

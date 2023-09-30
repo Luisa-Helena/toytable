@@ -1,0 +1,9 @@
+.cadastro {
+    cursor: pointer;
+    color: blue; 
+    text-decoration: underline;
+    text-align: right; 
+    margin-right: 15px;
+    font-size:12px ;
+    margin-top: 10px;
+}

@@ -1,0 +1,63 @@
+.caixa1{
+    width: 450px;
+    /* margin: 0 auto; */
+    /* position: relative; */
+    padding: 40px;
+    border-radius: 22px;
+    margin-top: 100px;
+    height: 110px;
+    float: right;
+    margin-right: 95px;
+    background-color: #CADFFB;
+    margin-bottom: 30px;
+    /* margin-bottom: 100px; */
+}
+.caixa2{
+    width: 450px;
+    /* margin: 0 auto; */
+    /* position: relative; */
+    padding: 40px;
+    border-radius: 22px;
+    margin-top: 30px;
+    height: 110px;
+    float: left;
+    margin-left: 95px;
+    background-color: #CADFFB;
+    margin-bottom: 30px;
+}
+.caixa3{
+    width: 450px;
+    /* margin: 0 auto; */
+    /* position: relative; */
+    padding: 40px;
+    border-radius: 22px;
+    margin-top: 30px; 
+    height: 110px;
+    float: right;
+    margin-right: 95px;
+    background-color: #CADFFB;
+    margin-bottom: 30px;
+}
+
+.linha {
+    clear: both;
+    width: 100%; 
+    height: 2px; 
+    background-color: #000000d2; 
+}
+
+.logo{
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 90px;
+}
+
+.nos img{
+    border: 13px solid #3E5F8A;
+}
+.nos{
+    margin-top: 30px;
+    margin-left: 50px;
+    border: 10px;
+    margin-left: 200px;
+}

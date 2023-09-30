@@ -1,0 +1,10 @@
+.titulo{
+    font-family:Stencil Std, fantasy;
+    font-size:40px; 
+    color:#000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}

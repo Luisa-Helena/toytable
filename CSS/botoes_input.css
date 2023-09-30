@@ -1,0 +1,41 @@
+.form-group {
+    margin-bottom: 5px; /*espacamento entre os campos*/
+  }
+.form-group input {
+    color: #000;
+    font-family: Graduate;
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #85b9fc; /*cor da borda dos botoes*/
+    border-radius: 22px;
+    width: 375px;
+    /* font-weight: bold; */
+    font-size: 16px;
+  }
+  
+  .form-group [type="button"] {
+    background-color: #A0C5F7; /*cor do botao*/
+    color: #000;
+    font-family: Graduate;
+    cursor: pointer;
+    border-radius: 22px;
+    margin-bottom: 5px;
+    /* font-weight: bold; */
+    font-size: 16px;
+  }  
+
+  .form-group input[type="submit"] {
+    color: #000;
+    font-family: Graduate;
+    background-color: #A0C5F7; /*cor do botao*/
+    cursor: pointer;
+    border-radius: 22px;
+    margin-bottom: 5px;
+    /* font-weight: bold; */
+    font-size: 16px;
+  }
+
+  .form-group input[type="submit"]:hover {
+    background-color: #6495ED;
+  }
+ 

@@ -1,0 +1,8 @@
+.toytable{
+    font-family: Stencil Std, fantasy;
+    text-align: left;
+    position: absolute;
+    margin-left:100px;
+    font-size: 40px;
+    margin-top: 10px;
+}
