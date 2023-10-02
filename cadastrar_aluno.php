@@ -7,7 +7,7 @@
     <title> Cadastro de Aluno </title>
 </head>
 <body>
-    <?php require "index.php"?>
+
     <div class="container">
     <?php require "conexao.php";
 

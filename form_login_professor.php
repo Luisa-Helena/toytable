@@ -27,8 +27,12 @@
     src: url('Graduate-Regular.ttf') format('truetype');
     /* Adicione outros formatos de fonte, se necessário */
 }
+@font-face {
+    font-family: 'Modak';
+    src: url('Modak-Regular.ttf') format('truetype');
+}
     body {
-    font-family: 'Graduate', sans-serif;
+    font-family: 'Graduate';
 }
 </style>
 
@@ -90,11 +94,11 @@
 </script>
 
 <div class="header"> 
-<div class="toytable"> TOYTABLE </div>
+<img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
 <div class="titulo"> LOGIN </div>
 </div>
 <br><br><br><br><br><br>
-<div class="footer">Email para contato: toytable@gmail.com</div>
+<div class="footer">Email para contato: toytable2023@gmail.com</div>
 <div class="form-container">
     <form action="login_professor.php" method="POST">
 
@@ -127,7 +131,7 @@
       <input type="Button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()"></br>
       <input type="Button" style="width: 398px;height:10;text-align: center;" value="ESQUECI A SENHA" onClick="window.location.href = 'form_esqueceu_senha.php';"></br>
       <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onClick="window.location.href = 'home.php';">
-   
+
       <!-- Exibir a mensagem de erro caso exista -->
       <?php
       

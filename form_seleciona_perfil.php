@@ -24,24 +24,29 @@
     src: url('Graduate-Regular.ttf') format('truetype');
     /* Adicione outros formatos de fonte, se necessário */
 }
+@font-face {
+    font-family: 'Modak';
+    src: url('Modak-Regular.ttf') format('truetype');
+}
     body {
-    font-family: 'Graduate', sans-serif;
+    font-family: 'Graduate';
 }
 </style>
 
     </head>
     <body>
   <div class="header"> 
+  <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
     <div class="titulo">OPÇÕES DE LOGIN</div>
   </div>
-  <div class="footer">Email para contato: toytable@gmail.com</div>
+  <div class="footer">Email para contato: toytable2023@gmail.com</div>
   </br></br></br></br></br></br>
   <div class="form-container">
     <main>
     <div class="form-group"></br>
       <input type="Button" style="width: 398px;height:10;text-align: center;" value="PROFESSOR" onclick="window.location.href = 'form_login_professor.php';"></br><br>
       <input type="Button" style="width: 398px;height:10;text-align: center;" value="ALUNO" onclick="window.location.href = 'form_login_aluno.php';"></br></br></br></br></br></br><br>
-      <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'index.php';">
+      <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
       
 </body>
 </html>

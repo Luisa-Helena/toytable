@@ -18,7 +18,6 @@ $resultado = $con->query($sql);
 
 // PEGANDO O ID DESSE USUARIO (EMAIL)
 $sql_id = "SELECT id_professor FROM tb_professor WHERE email = ? LIMIT 1";
-$status = "p";
 $stmt_id = $con->prepare($sql_id);
 $stmt_id->bind_param("s", $email);
 
@@ -33,9 +32,9 @@ if ($stmt_id->execute()) {
         $token = substr(md5(uniqid(rand(), true)), 0, 6);
 		date_default_timezone_set('America/Sao_Paulo');
         $expiration_time = date('Y-m-d H:i:s', strtotime('+15 minutes'));
-        $sql_token = "INSERT INTO tb_token (user_id, token, expiration_time, status) VALUES (?, ?, ?, ?)";
+        $sql_token = "INSERT INTO tb_token (user_id, token, expiration_time) VALUES (?, ?, ?)";
         $stmt_token = $con->prepare($sql_token);
-        $stmt_token->bind_param("isss", $user_id, $token, $expiration_time, $status);
+        $stmt_token->bind_param("iss", $user_id, $token, $expiration_time,);
 
         if ($stmt_token->execute()) {
             $mail = new PHPMailer();

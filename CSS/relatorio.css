@@ -1,6 +1,11 @@
+.container{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
 .form-container{
+    margin-left: 230px;
     max-width: 600px;
-    margin: 0 auto;
     position: relative;
     padding: 40px;
     border-radius: 22px;
@@ -37,10 +42,151 @@
     height: 40px;
     margin-top:-575px;
     border-radius: 22px;
+    display: flex;
+    align-items: center;
 }
 
 .informacao{
-    margin-right: 150px; 
+    margin-left:25px;
+    font-size: 20px;
     font-weight: bold;
+    display: flex;
+}
+.informacoes div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 6px;
+  }
+  
+.informacoes span {
+    margin-left: 15px;
+    font-size: 20px;
+    display: inline-block;
+    width: 100%;
+    flex: 1;
+    border-bottom: 1px solid black; /* Estilo da borda*/
+    }
 
+.relatorio{
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    }
+
+.campo_texto textarea{
+    background-color: #AFCDEA;
+    width: 607px;
+    height: 433px;
+    border: none;
+    text-align: left;
+    cursor: text;
+    font-size: 18px;
+    padding:10px;
+    resize: none; 
+    overflow-y: auto;
+    }
+
+textarea::placeholder {
+    color: #000000a8;
+    padding:2px;
+    font-size: 18px;
+    }
+
+.botao {
+    text-align: right;
+    }
+
+.botao [type="submit"] {
+    font-family: Graduate;
+    color: #000;
+    background-color: #A0C5F7; /*cor do botao*/
+    cursor: pointer;
+    border-radius: 22px;
+    font-size: 20px;
+    border: 1px solid #85b9fc; 
+    }
+
+
+.botao [type="submit"]:hover {
+    background-color: #6495ED;
+    }   
+    
+.menu {
+    width: 300px;
+    height: 375px;
+    background-color: #CADFFB;
+    margin-right: 230px;
+    margin-left: auto;
+    border-radius: 22px;
+    justify-content: center;
+}
+
+.dados{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    margin-left: 60px;
+}
+
+.dados-jogo{
+    margin-left:25px;
+    font-size: 20px;
+    /* font-weight: bold; */
+    display: flex;
+    margin-top: 25px;
+    /* flex-direction: column; */
+}
+
+.dados-jogo div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 6px;
+  }
+  
+.dados-jogo span {
+    margin-left: 15px;
+    font-size: 20px;
+    display: inline-block;
+    width: 100%;
+    flex: 1;
+    border-bottom: 1px solid black; /* Estilo da borda*/    
+}
+
+.botao-escuro{
+    color: #000;
+    font-family: Graduate;
+    background-color: #5783BC; /*cor do botao*/
+    cursor: pointer;
+    border-radius: 22px;
+    margin-bottom: 15px;
+    margin-top: 70px;
+    margin-left: 25px;
+    width: 250px;
+    height: 45px;
+    font-size: 20px;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+}
+
+.botao-voltar{
+    color: #000;
+    font-family: Graduate;
+    background-color: #5783BC; /*cor do botao*/
+    cursor: pointer;
+    border-radius: 22px;
+    margin-bottom: 10px;
+    margin-left: 25px;
+    width: 250px;
+    height: 45px;
+    font-size: 20px;
+    align-items: center;
+    display:flex;
+    justify-content: center;
 }

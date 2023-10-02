@@ -1,4 +1,32 @@
 <?php session_start(); ?>
+
+<?php 
+require "conexao.php"; 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nova_senha']) && isset($_POST['confirma_senha'])) {
+    $nova_senha = $_POST['nova_senha'];
+    $confirma_senha = $_POST['confirma_senha'];
+
+    if ($nova_senha === $confirma_senha) {
+        $usuario_id = $_SESSION['user_id'];
+
+        $sql = "UPDATE tb_professor SET senha = ? WHERE id_professor = ?"; 
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("si", $confirma_senha, $usuario_id);
+
+        if ($stmt->execute()) {
+            $_SESSION['mensagemSucesso'] = "Senha redefinida com sucesso!";
+            header("Location: tela_principal_professor.php");
+            exit; // Encerre o script após redirecionar
+        } else {
+            $_SESSION['mensagemErro'] = "Erro ao redefinir a senha.";
+        }
+    } else {
+        $_SESSION['mensagemErro'] = "As senhas não coincidem. Tente novamente.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -29,8 +57,12 @@
     src: url('Graduate-Regular.ttf') format('truetype');
     /* Adicione outros formatos de fonte, se necessário */
 }
+@font-face {
+    font-family: 'Modak';
+    src: url('Modak-Regular.ttf') format('truetype');
+}
     body {
-    font-family: 'Graduate', sans-serif;
+    font-family: 'Graduate';
 }
 </style>
 
@@ -70,27 +102,15 @@
         }
 
     </script>
-<!--FIM DA FUNÇÃO VER SENHA-->
-
-<!-- FUNÇÃO PARA LIMPAR OS CAMPOS DO FORMULARIO QUANDO A PAGINA FOI CARREGADA
-<script>
-        function limparCampos() {
-            var campos = document.querySelectorAll('input');
-            for (var i = 0; i < campos.length; i++) {
-                campos[i].value = '';
-            }
-        }
-        window.onload = limparCampos;
-    </script> -->
 
 </head>
 <body>
 <div class="header"> 
-<div class="toytable"> TOYTABLE </div>
+<img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
 <div class="titulo"> REDEFINIR SENHA </div>
 </div>
 <br><br><br><br><br><br>
-<div class="footer">Email para contato: toytable@gmail.com</div>
+<div class="footer">Email para contato: toytable2023@gmail.com</div>
 
 <div class="form-container">
     <form method="POST">
@@ -113,39 +133,11 @@
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="ENVIAR" >
       <input type="Button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()"></br>
       <!-- <input type="Button" style="width: 398px;height:10;text-align: center;" value="ESQUECI A SENHA"></br> -->
-      <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'index.php';">
+      <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
    
     
 </body>
 </html>
-
-
-<?php 
-require "conexao.php"; 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nova_senha']) && isset($_POST['confirma_senha'])) {
-    $nova_senha = $_POST['nova_senha'];
-    $confirma_senha = $_POST['confirma_senha'];
-
-    if ($nova_senha === $confirma_senha) {
-        $usuario_id = $_SESSION['user_id'];
-
-        $sql = "UPDATE tb_professor SET senha = ? WHERE id_professor = ?"; 
-        $stmt = $con->prepare($sql);
-        $stmt->bind_param("si", $confirma_senha, $usuario_id);
-
-        if ($stmt->execute()) {
-            $_SESSION['mensagemSucesso'] = "Senha redefinida com sucesso!";
-            header("Location: tela_principal_professor.php");
-            exit; // Encerre o script após redirecionar
-        } else {
-            $_SESSION['mensagemErro'] = "Erro ao redefinir a senha.";
-        }
-    } else {
-        $_SESSION['mensagemErro'] = "As senhas não coincidem. Tente novamente.";
-    }
-}
-?>
 
   <!-- Script para remover a mensagem de erro após alguns segundos -->
   <script>

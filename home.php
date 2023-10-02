@@ -26,8 +26,12 @@
     src: url('Graduate-Regular.ttf') format('truetype');
     /* Adicione outros formatos de fonte, se necessário */
 }
+@font-face {
+    font-family: 'Modak';
+    src: url('Modak-Regular.ttf') format('truetype');
+}
     body {
-    font-family: 'Graduate', sans-serif;
+    font-family: 'Graduate';
 }
 </style>
 
@@ -39,7 +43,8 @@
     <div class="entrar">
         <input type="button" value="Entrar" id="botaoEntrar" onClick="window.location.href='form_seleciona_perfil.php';">
     </div>
-    <div class="toytable"> TOYTABLE </div>
+    <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
+    <div class="toytable" onclick="window.location.href = 'home.php'"> TOYTABLE </div>
 <!-- <div class="titulo">CADASTRO</div> -->
 </div>
 <div class="caixa1"></div>
@@ -54,7 +59,7 @@
 <div class="linha"></div>
 <div class="caixa3"></div>
 <div class="nos"> <img src="CSS/imagens/nos.jpg" alt="Foto do grupo" width="175" height="175"> </div>
-<div class="footer">Email para contato: toytable@gmail.com</div>
+<div class="footer">Email para contato: toytable2023@gmail.com</div>
    <br><br><br><br><br><br>
  
    

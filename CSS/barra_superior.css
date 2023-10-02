@@ -3,13 +3,14 @@
     height: 70px;
     background: #CADFFB;
     justify-content: left;
-    background-image: url("imagens/logo.png");
-    background-repeat: no-repeat;
-    background-position:left; /* Ajusta a posição horizontal da imagem */
-    background-size: 100px;
-    background-position-y: -15px;
-    background-position-x: 10px;
     margin-bottom: 0px;
     position: absolute;
     z-index: 4;
+}
+.header img {
+    width: 75px;
+    height: 75px;
+    margin-top: -2px;
+    margin-left: 20px;
+    cursor: pointer;
 }

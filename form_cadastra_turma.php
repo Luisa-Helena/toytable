@@ -25,8 +25,12 @@
     src: url('Graduate-Regular.ttf') format('truetype');
     /* Adicione outros formatos de fonte, se necessário */
 }
+@font-face {
+    font-family: 'Modak';
+    src: url('Modak-Regular.ttf') format('truetype');
+}
     body {
-    font-family: 'Graduate', sans-serif;
+    font-family: 'Graduate';
 }
 </style>
 
@@ -56,10 +60,10 @@
     </script>
 
 <div class="header">
-<div class="toytable"> TOYTABLE </div>
+<img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
 <div class="titulo">CADASTRO </div>
 </div>
-    <div class="footer">Email para contato: toytable@gmail.com</div>
+<div class="footer">Email para contato: toytable2023@gmail.com</div>
    <br><br><br><br><br><br>
   <div class="form-container">
        

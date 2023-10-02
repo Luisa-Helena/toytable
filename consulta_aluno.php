@@ -12,8 +12,10 @@ $response = array();
 if ($result_id->num_rows > 0) {
     $row = $result_id->fetch_assoc();
     $_SESSION['id_aluno_sel'] = $row['id_aluno'];
+    $_SESSION['nome_aluno_sel'] = $row['nome'];
     $response['success'] = true;
     $response['id_aluno'] = $_SESSION['id_aluno_sel'];
+    $response['nome_aluno'] = $_SESSION['nome_aluno_sel'];
 } else {
     $response['success'] = false;
 }

@@ -1,0 +1,122 @@
+.form-container{
+    margin-left: 700px;
+    /* margin: auto; */
+    max-width: 500px;
+    position: relative;
+    padding: 40px;
+    border-radius: 22px;
+    height: 650px;
+    top: -5px;
+    background-color: #CADFFB;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    background-color: #3E5F8A;
+    width: 575px;
+    height: 725px;
+    top: 25px;
+    right: 25px;
+    border-radius: 22px;
+    z-index: -1;
+}
+
+.aluno {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #3E5F8A;
+  }
+  
+  li {
+    list-style-type: none;
+    border: 2px solid #3E5F8A;
+    text-align: left;
+    margin-bottom: 1px;
+    cursor:pointer;
+  }
+
+  li:hover {
+    background-color: #3e5f8ad7;
+  }
+  
+  li mark{
+    cursor: pointer;
+    background: none;
+    margin-left: 5px;
+  }
+
+.menu{
+  width: 330px;
+  height: 685px;
+  background-color: #CADFFB;
+  left: 0;
+  margin-left:200px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("imagens/gato.png");
+  background-repeat: no-repeat;
+  background-size: 395px;
+  background-position-y: 305px;
+  background-position-x: -20px;
+}
+
+.dados{
+  cursor:default;
+  margin-top: 40px;
+  font-size: 20px;
+  display: inline-block;
+}
+
+.dados-bd{
+  cursor:default;
+  margin-top: 40px;
+  font-size: 20px;
+  display: flex;
+
+}
+
+.botao{
+  color: #000;
+  font-family: Graduate;
+  background-color: #5783BC; /*cor do botao*/
+  cursor: pointer;
+  border-radius: 22px;
+  float: right;
+  margin-top: -550px;
+  margin-bottom: 10px;
+  margin-right: 125px;
+  width: 250px;
+  height: 45px;
+  font-size: 20px;
+  align-items: center;
+  display:flex;
+  justify-content: center;
+}
+
+.botao-voltar{
+  color: #000;
+  font-family: Graduate;
+  background-color: #5783BC; /*cor do botao*/
+  cursor: pointer;
+  border-radius: 22px;
+  float: right;
+  margin-top: -480px;
+  margin-bottom: 10px;
+  margin-right: 125px;
+  width: 250px;
+  height: 45px;
+  font-size: 20px;
+  align-items: center;
+  display:flex;
+  justify-content: center;
+}
+
