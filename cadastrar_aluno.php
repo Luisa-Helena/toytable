@@ -1,32 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    
-    <title> Cadastro de Aluno </title>
-</head>
-<body>
+<?php session_start();
+require "conexao.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //pegando os dados do formulário 
+    $cod_turma = $_POST["opcoes"];
+    $nome = $_POST["nome"];
 
-    <div class="container">
-    <?php require "conexao.php";
+    //mandando os dados para o banco
 
-//pegando os dados do formulário 
-    $cod_turma=$_POST["cod_turma"];
-    $nome=$_POST["nome"];
+    if ($cod_turma != "selected") {
+        $val_nome = "SELECT COUNT(*) as count FROM tb_aluno WHERE nome = ?";
 
-//mandando os dados para o banco
-    $comandoSql="insert into tb_aluno (cod_turma, nome)
-       values ('$cod_turma','$nome')";
-   
-      $resultado=mysqli_query($con,$comandoSql);
+        $stmt_nome = $con->prepare($val_nome);
+        $stmt_nome->bind_param("s", $nome);
+        $stmt_nome->execute();
+        $result_nome = $stmt_nome->get_result();
+        $row_nome = $result_nome->fetch_assoc();
 
-      if($resultado==true)
-        echo "Cadastrado com sucesso";
-      else
-        echo "Erro no cadastro";
+        if ($row_nome['count'] > 0) {
+            $_SESSION['mensagemErro'] = 'Nomes iguais não são permitidos. Por favor, tente novamente.';
+            header("Location: form_cadastra_aluno.php");
+            exit;
+        } else {
+            $comandoSql = "insert into tb_aluno (cod_turma, nome)
+        values ('$cod_turma','$nome')";
 
-        ?>
-        </div>
-</body>
-</html>
+            $resultado = mysqli_query($con, $comandoSql);
+        }
+        if ($resultado == true)
+            echo "Cadastrado com sucesso";
+        else
+            echo "Erro no cadastro";
+    } else {
+        $_SESSION['mensagemErro'] = 'Por favor selecione uma turma válida ' . $con->error;
+        header("Location: form_cadastra_aluno.php");
+        exit;
+    }
+}
+?>

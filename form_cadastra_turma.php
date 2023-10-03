@@ -1,3 +1,5 @@
+<?php session_start();?>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,7 +71,7 @@
        
     <form action="cadastrar_turma.php" method="POST">
       <div class="form-group">
-        <label for="nome">Nome:</label>
+        <label for="nome">Nome da turma:</label>
         <input type="text" id="nome" name="nome" required>
       </div>
       <div class="form-group">
@@ -79,7 +81,7 @@
       <div class="form-group">
         <label for="faixa_etaria">Faixa Etária:</label><br>
         <select id="faixa_etaria" name="faixa_etaria" required>
-            <option value=""></option>
+            <option value="selected"> Selecione uma faixa etária</option>
             <option value="a">1-3 anos</option>
             <option value="b">4-5 anos</option>
             <option value="c">6 anos</option>
@@ -107,4 +109,3 @@
 
 </body>
 </html>
-

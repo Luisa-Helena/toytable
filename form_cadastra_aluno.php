@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="CSS/barra_superior.css">
     <link rel="stylesheet" href="CSS/titulo.css">
     <link rel="stylesheet" href="CSS/toytable.css">
-    <link rel="stylesheet" href="CSS/ver_senha.css">
+    <link rel="stylesheet" href="CSS/botao_sair.css">
     <link rel="stylesheet" href="CSS/barra_inferior.css">
     <link rel="stylesheet" href="CSS/combobox.css">
 
@@ -54,55 +54,75 @@
         setTimeout(removerMensagemErro, 2500);
     </script>
 
-
     <!--Função de limpar-->
     <script>
         function limparCampos() {
             document.getElementById('nome').value = '';
-            document.getElementById('senha').value = '';
+            document.getElementById('opcoes').value = 'Selecione a turma';
             // Limpar outros campos do formulário aqui, se houver
         }
     </script>
 
+
     <div class="header">
-        <div class="titulo">CADASTRO</div>
+        <div class="sair">
+            <input type="button" value="Sair" id="botaoSair">
+        </div>
+
+        <script>
+            document.getElementById('botaoSair').addEventListener('click', function() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'encerrar_sessao.php', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert('Você será redirecionado para a página inicial.');
+                        window.location.href = 'home.php';
+                    }
+                };
+                xhr.send();
+            });
+        </script>
+        <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
     </div>
-    <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
     <br><br><br><br><br><br>
     <div class="form-container">
 
         <form action="cadastrar_aluno.php" method="POST">
             <div class="form-group">
-                <label for="nome">Nome:</label>
+                <label for="nome">Nome do aluno:</label>
                 <input type="text" id="nome" name="nome" required>
             </div>
             <!-- COMBOBOX DAS TURMAS, DADOS VINDOS DO BANCO -->
-            <label for="opcoes">Selecione a turma:</label>
-            <select id="opcoes" name="opcoes">
-                <?php require "conexao.php";
-                $sql = "SELECT nome FROM tb_turma";
-                $result = $con->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $nome = $row["nome"];
-                        echo "<option value='$nome'>$nome</option>";
-                    }
-                }
-                ?>
-                <div class="form-group">
-                    <input type="submit" style="width: 197px;height:10;text-align: center;" value="CADASTRAR">
-                    <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
-                    <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
-
-                    <!-- Exibir a mensagem de erro caso exista -->
-                    <?php
-                    if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
-                        echo '<div class="mensagem-erro">' . $_SESSION['mensagemErro'] . '</div>';
-                        $_SESSION['mensagemErro'] = ''; // Limpa a mensagem de erro da sessão após exibi-la
+            <div class="form-group">
+                <label for="opcoes">Turma:</label>
+                <select id="opcoes" name="opcoes" required>
+                <option value="selected">Selecione uma Turma</option>
+                    <?php require "conexao.php";
+                    $sql = "SELECT nome, id_turma FROM tb_turma";
+                    $result = $con->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $nome = $row["nome"];
+                            $id_turma = $row["id_turma"];
+                            echo "<option value='$id_turma'>$nome</option>";
+                        }
                     }
                     ?>
-                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" style="margin-top:155px; width: 197px;height:10;text-align: center;" value="CADASTRAR">
+                <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
+                <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
+
+                <!-- Exibir a mensagem de erro caso exista -->
+                <?php
+                if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
+                    echo '<div class="mensagem-erro">' . $_SESSION['mensagemErro'] . '</div>';
+                    $_SESSION['mensagemErro'] = ''; // Limpa a mensagem de erro da sessão após exibi-la
+                }
+                ?>
+            </div>
         </form>
 
     </div>

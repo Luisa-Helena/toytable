@@ -124,6 +124,9 @@ if (isset($_SESSION['user_email'])) {
             echo "<div>TOTAL DE TURMAS: <span>$qtd_turmas</span></div>";
             ?>
         </div>
+        <div class="editar">      
+                <input type="button" value="EDITAR" onClick="window.location.href = 'tela_editar_professor.php';">
+        </div>
     </div>
 </body>
 

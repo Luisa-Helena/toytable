@@ -99,7 +99,7 @@
             <div class="form-group">
                 <label for="nome">ALUNO:</label><br>
                 <select id="nome" name="nome" required>
-                    <option value="">Selecione um aluno</option>
+                    <option value="selected">Selecione um aluno</option>
                 </div> 
             
             <div class="form-group">
