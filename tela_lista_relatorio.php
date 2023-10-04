@@ -83,8 +83,8 @@
                     $data = $row_relatorio["data"];
 
                     echo '<td>';
-                    echo '<div class="turma">';
-                    echo '<div class="texto" id="mostrarBotao">' . $data . '</div>';
+                    echo '<div class="turma" onClick="abrirModal()">';
+                    echo '<div class="texto">' . $data . '</div>';
                     echo '</div>';
                     echo '</td>';
                 }
@@ -95,52 +95,21 @@
         </tr>
     </table>
 
-    <div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="fechar" id="fecharModal">&times;</span>
-        <h2>Detalhes do Relatório</h2>
-        <p id="descricaoRelatorio"></p>
-        <!-- Outras informações do relatório podem ser exibidas aqui -->
+    <div id="janela-modal" class="janela-modal">
+    <div class="modal">
+        <form action="cadastra_relatorio.php" method="POST">
+            <div class="form-group">
+                <label for="titulo">Titulo:</label>
+                <input type="text" id="titulo" name="titulo" required>
+            </div><br>
+            <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+            </div>
     </div>
 </div>
 
-<script>
-// Obtém referências para elementos do DOM
-const modal = document.getElementById('modal');
-const fecharModal = document.getElementById('fecharModal');
-const descricaoRelatorio = document.getElementById('descricaoRelatorio');
-const turmas = document.querySelectorAll('.turma');
+<script scr="script.js"></script>
 
-// Função para mostrar o modal
-function mostrarModal(descricao) {
-    modal.style.display = 'block';
-    descricaoRelatorio.textContent = descricao;
-}
-
-// Função para ocultar o modal
-function fecharModalFunc() {
-    modal.style.display = 'none';
-}
-
-// Adiciona evento de clique a todas as divs com classe 'turma'
-turmas.forEach(function (turma) {
-    turma.addEventListener('click', function () {
-        // Preenche o modal com a descrição do relatório (ou outras informações, se necessário)
-        const descricao = this.querySelector('.texto').textContent;
-        mostrarModal(descricao);
-    });
-});
-
-// Fecha o modal quando o usuário clica no botão de fechar
-fecharModal.addEventListener('click', fecharModalFunc);
-
-// Fecha o modal se o usuário clicar fora dele
-window.addEventListener('click', function (event) {
-    if (event.target === modal) {
-        fecharModalFunc();
-    }
-});
-
-    </script>
 </body>
 </html>

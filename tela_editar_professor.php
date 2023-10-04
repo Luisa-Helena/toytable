@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Editar dados </title>
-    <link rel="stylesheet" href="CSS/caixa_texto_form.css">
+    <link rel="stylesheet" href="CSS/caixa_texto_form_MAIOR.css">
     <link rel="stylesheet" href="CSS/mensagem_erro_login.css">
     <link rel="stylesheet" href="CSS/botoes_input.css">
     <link rel="stylesheet" href="CSS/barra_superior.css">
@@ -125,12 +125,26 @@
         <input type="tel" id="telefone" name="telefone" value="<?php echo isset($telefone) ? $telefone : ''; ?>" required>
       </div>
       <div class="form-group">
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha">
+        <label for="senha">Senha atual:</label>
+        <input type="password" id="senha_atual" name="senha_atual">
       </div>
       <div class="input-imagem3">
       <img class="ver-senha-icon-cadastro" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha()">
       </div>
+      <div class="form-group">
+        <label for="senha">Nova senha:</label>
+        <input type="password" id="nova_senha" name="nova_senha">
+      </div>
+      <div class="input-imagem3">
+      <img class="ver-senha-icon-cadastro" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha()">
+      </div>
+      <div class="form-group">
+        <label for="senha">Confirme a nova senha:</label>
+        <input type="password" id="confirma_nova_senha" name="confirma_nova_senha">
+      </div>
+      <div class="input-imagem3">
+      <img class="ver-senha-icon-cadastro" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha()">
+      </div><br><br>
       <div class="form-group">
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="ATUALIZAR DADOS">
       <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
@@ -138,7 +152,6 @@
       
       <!-- Exibir a mensagem de erro caso exista -->
    <?php
-    var_dump($_SESSION);
         if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
           echo '<div class="mensagem-erro">' . $_SESSION['mensagemErro'] . '</div>';
           $_SESSION['mensagemErro'] = ''; // Limpa a mensagem de erro da sessão após exibi-la

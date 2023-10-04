@@ -125,12 +125,23 @@
 <div class="menu">
     <?php
     require_once "conexao.php";
-    $id_turma = $_SESSION['id_turma_sel'];
-    var_dump($_SESSION);
+    ?>
+    <script>
+        // Pega a string da query da URL
+        const queryString = window.location.search;
+
+        const params = new URLSearchParams(queryString);
+
+        const idTurmaSel = params.get("idTurmaSel");
+
+        console.log(idTurmaSel);
+    </script>
+<?php
+    $idTurmaSel = $con->real_escape_string($idTurmaSel);
     $sql = "SELECT t.nome, t.qtd_aluno, t.faixa_etaria, COUNT(a.id_aluno) AS cont_aluno
             FROM tb_turma t
             LEFT JOIN tb_aluno a ON t.id_turma = a.cod_turma
-            WHERE t.id_turma = '$id_turma' GROUP BY t.nome, t.qtd_aluno, t.faixa_etaria;";
+            WHERE t.id_turma = '$idTurmaSel' GROUP BY t.nome, t.qtd_aluno, t.faixa_etaria;";
     $result = $con->query($sql);
 
     if ($result && $result->num_rows > 0) {

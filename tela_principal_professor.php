@@ -18,6 +18,7 @@ if (isset($_SESSION['user_email'])) {
 
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        $_SESSION["professor_id"] = $row["id_professor"];
         $nome = $row["nome"];
         $cpf = $row["CPF"];
         $email = $row["email"];
@@ -96,7 +97,7 @@ if (isset($_SESSION['user_email'])) {
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
 
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>    
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
     <div class="menu">
         <div class="botao-perfil">

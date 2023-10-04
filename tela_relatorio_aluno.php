@@ -37,14 +37,30 @@
     </style>
 
 </head>
-
 <body>
-    <div class="header">
-        <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
-        <div class="sair">
-            <input type="button" value="Sair" id="botaoSair">
-        </div>
-    </div>
+<div class="header">
+
+<div class="sair">
+    <input type="button" value="Sair" id="botaoSair">
+</div>
+
+<script>
+    document.getElementById('botaoSair').addEventListener('click', function() {
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'encerrar_sessao.php', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert('Você será redirecionado para a página inicial.');
+                window.location.href = 'home.php';
+            }
+        };
+        xhr.send();
+    });
+</script>
+<img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+
+</div>
     <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
     <div class="container">
@@ -81,7 +97,7 @@
             <div class="dados-jogo">TEMPO:
                 <div><span> ......... </span></div>
             </div>
-            <div class="botao-escuro" onclick="window.location.href = 'lista_relatorio.php';"> TODOS RELATÓRIOS </div>
+            <div class="botao-escuro" onclick="window.location.href = 'tela_lista_relatorio.php';"> TODOS RELATÓRIOS </div>
             <div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>
 
         </div>
