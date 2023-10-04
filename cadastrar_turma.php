@@ -1,5 +1,6 @@
 <?php session_start();
 require "conexao.php";
+
 $nome_turma = $_POST["nome"];
 $qtd_aluno = $_POST["qtd_aluno"];
 $faixa_etaria = $_POST["faixa_etaria"];

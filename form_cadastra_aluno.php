@@ -92,14 +92,15 @@
             <div class="form-group">
                 <label for="nome">Nome do aluno:</label>
                 <input type="text" id="nome" name="nome" required>
-            </div>
+            </div><br>
             <!-- COMBOBOX DAS TURMAS, DADOS VINDOS DO BANCO -->
             <div class="form-group">
                 <label for="opcoes">Turma:</label>
                 <select id="opcoes" name="opcoes" required>
                 <option value="selected">Selecione uma Turma</option>
                     <?php require "conexao.php";
-                    $sql = "SELECT nome, id_turma FROM tb_turma";
+                    $id_professor=$_SESSION['professor_id'];
+                    $sql = "SELECT nome, id_turma FROM tb_turma WHERE cod_professor= '$id_professor'";
                     $result = $con->query($sql);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -111,7 +112,7 @@
                     ?>
             </div>
             <div class="form-group">
-                <input type="submit" style="margin-top:155px; width: 197px;height:10;text-align: center;" value="CADASTRAR">
+                <input type="submit" style="margin-top:125px; width: 197px;height:10;text-align: center;" value="CADASTRAR">
                 <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
                 <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
 

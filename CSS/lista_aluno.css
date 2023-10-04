@@ -29,6 +29,11 @@
     margin-bottom: 10px;
 }
 
+.teste{
+  max-height: 570px; 
+  overflow-y: auto; 
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -58,7 +63,7 @@ table {
   height: 685px;
   background-color: #CADFFB;
   left: 0;
-  margin-left:200px;
+  margin-left:185px;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -66,23 +71,16 @@ table {
   background-repeat: no-repeat;
   background-size: 395px;
   background-position-y: 305px;
-  background-position-x: -20px;
+  background-position-x: -60px;
 }
 
 .dados{
   cursor:default;
-  margin-top: 40px;
-  font-size: 20px;
-  display: inline-block;
+  margin-top: 60px;
+  margin-left: 30px;
 }
 
-.dados-bd{
-  cursor:default;
-  margin-top: 40px;
-  font-size: 20px;
-  display: flex;
 
-}
 
 .botao{
   color: #000;

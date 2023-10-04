@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="CSS/toytable.css">
     <link rel="stylesheet" href="CSS/mensagem_erro_login.css">
     <link rel="stylesheet" href="CSS/botao_sair.css">
+    <link rel="stylesheet" href="CSS/caixa_dados_professor.css">
 
     <style>
         * {
@@ -74,8 +75,8 @@
 
             $sql = "SELECT nome FROM tb_aluno WHERE cod_turma = '$idTurmaSel'";
             $result = $con->query($sql);
-
             echo "<table>";
+            echo "<div class='teste'>";
             echo "<script>";
             echo "var con = '" . json_encode($con) . "';";
             echo "</script>";
@@ -87,60 +88,78 @@
                     echo "</li>";
                 }
             } ?>
-            <script>
-                function Aluno(nomeAluno) {
-                    if (nomeAluno && nomeAluno.trim() !== '') {
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('GET', 'consulta_aluno.php?nomeAluno=' + encodeURIComponent(nomeAluno), true);
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4) {
-                                if (xhr.status === 200) {
-                                    var response = JSON.parse(xhr.responseText);
-                                    if (response.success) {
-                                        sessionStorage.setItem('id_aluno_sel', response.id_aluno);
-                                        sessionStorage.setItem('nome_aluno_sel', response.nome_aluno);
-                                        window.location.href = 'tela_relatorio_aluno.php?idAlunoSel=' + response.id_aluno;
-                                    }
-                                } else {
-                                    alert('Erro na requisição.');
-                                }
+    </div>
+    <script>
+        function Aluno(nomeAluno) {
+            if (nomeAluno && nomeAluno.trim() !== '') {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'consulta_aluno.php?nomeAluno=' + encodeURIComponent(nomeAluno), true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.success) {
+                                sessionStorage.setItem('id_aluno_sel', response.id_aluno);
+                                sessionStorage.setItem('nome_aluno_sel', response.nome_aluno);
+                                window.location.href = 'tela_relatorio_aluno.php?idAlunoSel=' + response.id_aluno;
                             }
-                        };
-                        xhr.send();
-                    } else {
-                        alert("Erro: Nome da turma inválido.");
+                        } else {
+                            alert('Erro na requisição.');
+                        }
                     }
-                }
-            </script>
-        <?php
+                };
+                xhr.send();
+            } else {
+                alert("Erro: Nome da turma inválido.");
+            }
+        }
+    </script>
+<?php
             echo "</table>";
         } else {
             $response = array('success' => false);
             echo json_encode($response);
         }
-        ?>
-    </div>
-    <div class="menu">
-        <div class="dados"> TURMA: </div>
-        <div class="dados-bd">
-            <?php
-            require_once "conexao.php";
-            $id_turma = $_SESSION['id_turma_sel'];
-            $sql = "SELECT nome FROM tb_turma WHERE id_turma='$id_turma'";
-            $result = $con->query($sql);
+?>
+</div>
+<div class="menu">
+    <?php
+    require_once "conexao.php";
+    $id_turma = $_SESSION['id_turma_sel'];
+    var_dump($_SESSION);
+    $sql = "SELECT t.nome, t.qtd_aluno, t.faixa_etaria, COUNT(a.id_aluno) AS cont_aluno
+            FROM tb_turma t
+            LEFT JOIN tb_aluno a ON t.id_turma = a.cod_turma
+            WHERE t.id_turma = '$id_turma' GROUP BY t.nome, t.qtd_aluno, t.faixa_etaria;";
+    $result = $con->query($sql);
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $nome_turma = $row["nome"];
-                echo "<span> $nome_turma </span>";
-            } else {
-                echo " Erro para encontrar a turma";
-            }
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nome = $row["nome"];
+        $qtd_aluno = $row["qtd_aluno"];
+        $faixa_etaria = $row["faixa_etaria"];
+        $cont_aluno = $row["cont_aluno"];
+    } else {
+        echo "Nenhum resultado encontrado.";
+    }
+    ?>
+    <div class="dados">
+        <div class="informacoes">
+            <?php
+            echo "<div>Turma: $nome</div>";
+
+            echo "<div>Número de alunos: $qtd_aluno</div>";
+
+            echo "<div>Faixa etária: $faixa_etaria</div>";
+
+            echo "<div>Alunos cadastrados: $cont_aluno</div>";
             ?>
         </div>
     </div>
-    <div class="botao" onclick="window.location.href = 'form_cadastra_aluno.php';">CADASTRAR ALUNO</div>
-    <div class="botao-voltar" onclick="window.location.href = 'tela_turma.php';">VOLTAR</div>
+
+</div>
+<div class="botao" onclick="window.location.href = 'form_cadastra_aluno.php';">CADASTRAR ALUNO</div>
+<div class="botao-voltar" onclick="window.location.href = 'tela_turma.php';">VOLTAR</div>
 </body>
 
 </html>

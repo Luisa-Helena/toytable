@@ -81,7 +81,7 @@
             <div class="dados-jogo">TEMPO:
                 <div><span> ......... </span></div>
             </div>
-            <div class="botao-escuro"> TODOS RELATÓRIOS </div>
+            <div class="botao-escuro" onclick="window.location.href = 'lista_relatorio.php';"> TODOS RELATÓRIOS </div>
             <div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>
 
         </div>
