@@ -107,7 +107,7 @@
    <br><br><br><br><br><br>
   <div class="form-container">
        
-    <form action= "editar.php" method="POST">
+    <form action= "editar_professor.php" method="POST">
       <div class="form-group">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<?php echo $nome; ?>" required>

@@ -14,8 +14,8 @@
         $stmt->bind_param("ssssi", $nome, $cpf, $email, $telefone, $id_professor);
         
         if ($stmt->execute()) {
-            // Atualização bem-sucedida
-            $_SESSION['mensagemSucesso'] = 'Informações atualizadas com sucesso.';
+            header("Location: tela_principal_professor.php");
+            exit;
         } else {
             // Erro na atualização
             $_SESSION['mensagemErro'] = 'Erro na atualização das informações.';

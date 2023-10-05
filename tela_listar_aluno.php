@@ -153,6 +153,14 @@
     } else {
         echo "Nenhum resultado encontrado.";
     }
+        if($faixa_etaria == 'a'){
+            $idade = '1-3 anos';
+        }else if($faixa_etaria == 'b'){
+            $idade = '4-5 anos';
+        }else if($faixa_etaria == 'c'){
+            $idade = '6 anos';
+        }
+
     ?>
     <div class="dados">
         <div class="informacoes">
@@ -161,7 +169,7 @@
 
             echo "<div>Número de alunos: $qtd_aluno</div>";
 
-            echo "<div>Faixa etária: $faixa_etaria</div>";
+            echo "<div>Faixa etária: $idade</div>";
 
             echo "<div>Alunos cadastrados: $cont_aluno</div>";
             ?>
