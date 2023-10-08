@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+if (isset($_POST['setSessionButton'])) {
+    $_SESSION['titulo'] = 'ESQUECI MINHA SENHA';
+    header("Location: form_esqueceu_senha.php");
+    exit(); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +120,7 @@
       </div>
     <div class="input-imagem">
     <img class="ver-senha-icon" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha()">
-    </div>    
+    </div>
     <div class="cadastro">
         <label for="linkLabel" id="linkLabel">Não tenho uma conta</label>
     </div>
@@ -128,10 +135,12 @@
 
       <div class="form-group">
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="ENTRAR" >
+      </form>    
       <input type="Button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()"></br>
-      <input type="Button" style="width: 398px;height:10;text-align: center;" value="ESQUECI A SENHA" onClick="window.location.href = 'form_esqueceu_senha.php';"></br>
+      <form method="post">
+        <input type="submit" name="setSessionButton" style="width: 398px;height:10;text-align: center;" value="ESQUECI A SENHA"></br>
+            </form>
       <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onClick="window.location.href = 'home.php';">
-
       <!-- Exibir a mensagem de erro caso exista -->
       <?php
       

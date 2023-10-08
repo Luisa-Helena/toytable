@@ -1,17 +1,18 @@
 <?php session_start();
 require "conexao.php";
-$id_aluno = $_SESSION['id_aluno_sel'];
+$id_turma = $_SESSION['id_turma_sel'];
 
-$sql = "SELECT nome, cod_turma FROM tb_aluno WHERE id_aluno = ?";
+$sql = "SELECT nome, qtd_aluno, faixa_etaria FROM tb_turma WHERE id_turma= ?";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("i", $id_aluno);
+$stmt->bind_param("i", $id_turma);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
   $nome = $row['nome'];
-  $cod_turma = $row['cod_turma'];
+  $qtd_aluno = $row['qtd_aluno'];
+  $faixa_etaria = $row['faixa_etaria'];
 }
 
 ?>
@@ -106,35 +107,33 @@ if ($result->num_rows > 0) {
 
     <form action="editar_aluno.php" method="POST">
       <div class="form-group">
-        <label for="nome">Nome do aluno:</label>
+        <label for="nome">Nome da turma:</label>
         <input type="text" id="nome" name="nome" value="<?php echo $nome; ?>" required>
       </div><br>
       <!-- COMBOBOX DAS TURMAS, DADOS VINDOS DO BANCO -->
       <div class="form-group">
-        <label for="opcoes">Turma:</label>
-        <select id="opcoes" name="opcoes" value="<?php echo $nome_turma; ?>" required>
+        <label for="opcoes">Faixa Etária:</label>
+        <select id="opcoes" name="opcoes" value="<?php echo $faixa_etaria; ?>" required>
           <option value="selected">Selecione uma Turma</option>
-
           <?php
           require "conexao.php";
-          $id_professor = $_SESSION['professor_id'];
-          $sql = "SELECT nome, id_turma FROM tb_turma WHERE cod_professor= '$id_professor'";
+          $sql = "SELECT faixa_etaria, id_turma FROM tb_turma'";
           $result = $con->query($sql);
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-              $nome = $row["nome"];
-              $id_turma = $row["id_turma"];
-              $selected = ($id_turma == $cod_turma) ? "selected" : "";
-              echo "<option value='$id_turma' $selected>$nome</option>";
+                $id_turma = $row["id_turma"];
+                $faixa_etaria = $row["faixa_etaria"];
+                $selected = ($id_turma == $cod_turma) ? "selected" : "";
+                echo "<option value='$id_turma' $selected>$faixa_etaria</option>";
             }
-          }
-          ?>
+        }
+        ?>
         </select>
-      </div>
+        
       <div class="form-group">
         <input type="submit" style="margin-top:125px; width: 197px;height:10;text-align: center;" value="ATUALIZAR DADOS">
         <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
-        <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
+        <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';">
 
         <!-- Exibir a mensagem de erro caso exista -->
         <?php

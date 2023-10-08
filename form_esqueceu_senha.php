@@ -1,9 +1,10 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Esqueci minha senha </title>
+    <title> <?php $titulo = $_SESSION['titulo']; echo $titulo?> </title>
       
     
     <link rel="stylesheet" href="CSS/resposividade.css">
@@ -41,14 +42,14 @@
 <body>
 <div class="header"> 
   <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
-<div class="titulo"> ESQUECI MINHA SENHA </div>
+<div class="titulo"> <?php $titulo = $_SESSION['titulo']; echo $titulo ?> </div>
 </div>
 <br><br><br><br><br><br>
 <div class="footer">Email para contato: toytable2023@gmail.com</div>
 <div class="form-container">
-    <form action="email.php" method="POST">
+   <form action="email.php" method="POST">
 
-      <div class="form-group">        
+      <div class="form-group"><br>      
         <label for="email">EMAIL:</label><br>
         <input type="text" id="email" name="email" required autocomplete="off">
       </div></br></br><br><br>
@@ -57,7 +58,6 @@
       <div class="form-group">
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="ENVIAR" >
       <input type="Button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()"></br>
-      <input type="Button" style="width: 398px;height:10;text-align: center;" value="ESQUECI A SENHA"></br>
       <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
    
     

@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Turmas </title>
 
-    <link rel="stylesheet" href="CSS/caixa_dados_professor.css">
+    <link rel="stylesheet" href="CSS/jogos_disponiveis.css">
     <link rel="stylesheet" href="CSS/barra_superior.css">
     <link rel="stylesheet" href="CSS/titulo.css">
     <link rel="stylesheet" href="CSS/barra_inferior.css">    
     <link rel="stylesheet" href="CSS/toytable.css">
     <link rel="stylesheet" href="CSS/menu.css">
+    <link rel="stylesheet" href="CSS/botao_sair.css">
     <link rel="stylesheet" href="CSS/resposividade.css">
     
     <style>
@@ -36,7 +37,6 @@
 <body>
     
     <div class="header"> 
-    <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
         <div class="sair">
                 <input type="button" value="Sair" id="botaoSair">
             </div>
@@ -55,6 +55,8 @@
                     xhr.send();
                 });
             </script>
+    
+    <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
     </div>
     <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
@@ -68,6 +70,27 @@
     </div>
     <div class="botao-jogo"> 
         <input type="button" style="background-color:#BCEEFF;" value="JOGOS" onClick="window.location.href = 'tela_jogo.php';">
+    </div>
+</div>
+
+<div class="fundo">
+    <div class="banner-jogo">
+        <img src='CSS/imagens/capa-jogo1.png' class='capa-jogo'>
+        <div class="botao1">
+            <input type="button" value="JOGAR" onclick="window.location.href = 'form_edita_senha.php';">
+        </div>
+    </div>
+    <div class="banner-jogo">
+        <img src='CSS/imagens/capa-jogo1.png' class='capa-jogo'>
+        <div class="botao2">
+            <input type="button" value="JOGAR" onclick="window.location.href = 'form_edita_senha.php';">
+        </div>
+    </div>
+    <div class="banner-jogo">
+        <img src='CSS/imagens/capa-jogo1.png' class='capa-jogo'>
+        <div class="botao3">
+            <input type="button" value="JOGAR" onclick="window.location.href = 'form_edita_senha.php';">
+        </div>
     </div>
 </div>
 

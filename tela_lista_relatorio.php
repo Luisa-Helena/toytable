@@ -83,6 +83,7 @@
                     $data = $row_relatorio["data"];
 
                     echo '<td>';
+                    echo"<button onClick='abrirModal()'> ";
                     echo '<div class="turma" onClick="abrirModal()">';
                     echo '<div class="texto">' . $data . '</div>';
                     echo '</div>';
@@ -95,21 +96,8 @@
         </tr>
     </table>
 
-    <div id="janela-modal" class="janela-modal">
-    <div class="modal">
-        <form action="cadastra_relatorio.php" method="POST">
-            <div class="form-group">
-                <label for="titulo">Titulo:</label>
-                <input type="text" id="titulo" name="titulo" required>
-            </div><br>
-            <div class="form-group">
-                <label for="data">Data:</label>
-                <input type="date" id="data" name="data" required>
-            </div>
-    </div>
-</div>
-
 <script scr="script.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 </body>
 </html>

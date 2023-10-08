@@ -126,6 +126,7 @@
     <?php
     require_once "conexao.php";
     ?>
+
     <script>
         // Pega a string da query da URL
         const queryString = window.location.search;
@@ -136,7 +137,8 @@
 
         console.log(idTurmaSel);
     </script>
-<?php
+
+    <?php
     $idTurmaSel = $con->real_escape_string($idTurmaSel);
     $sql = "SELECT t.nome, t.qtd_aluno, t.faixa_etaria, COUNT(a.id_aluno) AS cont_aluno
             FROM tb_turma t
@@ -153,13 +155,13 @@
     } else {
         echo "Nenhum resultado encontrado.";
     }
-        if($faixa_etaria == 'a'){
-            $idade = '1-3 anos';
-        }else if($faixa_etaria == 'b'){
-            $idade = '4-5 anos';
-        }else if($faixa_etaria == 'c'){
-            $idade = '6 anos';
-        }
+    if ($faixa_etaria == 'a') {
+        $idade = '1-3 anos';
+    } else if ($faixa_etaria == 'b') {
+        $idade = '4-5 anos';
+    } else if ($faixa_etaria == 'c') {
+        $idade = '6 anos';
+    }
 
     ?>
     <div class="dados">
@@ -174,10 +176,12 @@
             echo "<div>Alunos cadastrados: $cont_aluno</div>";
             ?>
         </div>
-    </div>
-
+</div>
 </div>
 <div class="botao" onclick="window.location.href = 'form_cadastra_aluno.php';">CADASTRAR ALUNO</div>
+<div class="botao-editar">
+    <input type="button" value="EDITAR TURMA" onClick="window.location.href = 'tela_editar_turma.php';">
+</div>
 <div class="botao-voltar" onclick="window.location.href = 'tela_turma.php';">VOLTAR</div>
 </body>
 

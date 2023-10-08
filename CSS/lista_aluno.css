@@ -74,13 +74,46 @@ table {
   background-position-x: -80px;
 }
 
+/* .botao-editar [type="button"]{
+  border: none;
+  position: relative;
+  border-radius: 22px;
+  float: left;
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 25px;
+  width: 85px;
+  top: 22px;  
+  background-color: #5783BC;
+  font-family: Graduate;
+  font-size: 20px;
+  cursor: pointer;
+} */
+
+.botao-editar [type="button"]{
+  border: none;
+  color: #000;
+  font-family: Graduate;
+  background-color: #5783BC; /*cor do botao*/
+  cursor: pointer;
+  border-radius: 22px;
+  float: right;
+  margin-top: -480px;
+  margin-bottom: 10px;
+  margin-right: 125px;
+  width: 250px;
+  height: 45px;
+  font-size: 20px;
+  align-items: center;
+  display:flex;
+  justify-content: center;
+}
+
 .dados{
   cursor:default;
   margin-top: 60px;
   margin-left: 30px;
 }
-
-
 
 .botao{
   color: #000;
@@ -107,7 +140,7 @@ table {
   cursor: pointer;
   border-radius: 22px;
   float: right;
-  margin-top: -480px;
+  margin-top: -410px;
   margin-bottom: 10px;
   margin-right: 125px;
   width: 250px;
@@ -117,4 +150,3 @@ table {
   display:flex;
   justify-content: center;
 }
-

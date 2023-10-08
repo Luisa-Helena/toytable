@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Editar dados </title>
-    <link rel="stylesheet" href="CSS/caixa_texto_form_MAIOR.css">
+    <link rel="stylesheet" href="CSS/caixa_texto_form.css">
     <link rel="stylesheet" href="CSS/mensagem_erro_login.css">
     <link rel="stylesheet" href="CSS/botoes_input.css">
     <link rel="stylesheet" href="CSS/barra_superior.css">
@@ -66,25 +66,57 @@
         setTimeout(removerMensagemErro, 2500);
     </script>
 
+
 <!--FUNÇÃO VER SENHA-->
 <script>
         function verSenha() {
-            var senhaInput = $('#senha');
-            var tipo = senhaInput.attr('type');
-            var imagemIcone = $('.ver-senha-icon-cadastro');
+            var novaSenhaInput = $('#nova_senha');
+            var tipoNovaSenha = novaSenhaInput.attr('type');
+            var imagemIcone = $('.ver-senha-icon-nova');
             
-            if (tipo === 'password') {
-                senhaInput.attr('type', 'text');
+            if (tipoNovaSenha === 'password') {
+                novaSenhaInput.attr('type', 'text');
+                imagemIcone.attr('src', 'senha_visivell_nova.png');
+                imagemIcone.attr('alt', 'Senha Visível');
+            } else {
+                novaSenhaInput.attr('type', 'password');
+                imagemIcone.attr('src', 'senha_oculta_nova.png');
+                imagemIcone.attr('alt', 'Senha Oculta');
+            }
+        }
+
+        function verSenha2() {
+            var confirmaSenhaInput = $('#confirma_senha');
+            var tipoConfirmaSenha = confirmaSenhaInput.attr('type');
+            var imagemIcone = $('.ver-senha-icon-confirma');
+            
+            if (tipoConfirmaSenha === 'password') {
+                confirmaSenhaInput.attr('type', 'text');
                 imagemIcone.attr('src', 'senha_visivell.png');
                 imagemIcone.attr('alt', 'Senha Visível');
             } else {
-                senhaInput.attr('type', 'password');
+                confirmaSenhaInput.attr('type', 'password');
+                imagemIcone.attr('src', 'senha_oculta.png');
+                imagemIcone.attr('alt', 'Senha Oculta');
+            }
+        }
+
+        function verSenha3() {
+            var atualSenhaInput = $('#atual_senha');
+            var tipoSenhaAtual = atualSenhaInput.attr('type');
+            var imagemIcone = $('.ver-senha-icon-atual');
+            
+            if (tipoSenhaAtual === 'password') {
+                atualSenhaInput.attr('type', 'text');
+                imagemIcone.attr('src', 'senha_visivell.png');
+                imagemIcone.attr('alt', 'Senha Visível');
+            } else {
+                atualSenhaInput.attr('type', 'password');
                 imagemIcone.attr('src', 'senha_oculta.png');
                 imagemIcone.attr('alt', 'Senha Oculta');
             }
         }
     </script>
-<!--FIM DA FUNÇÃO VER SENHA-->
 
 
 <!--Função de limpar-->
@@ -112,44 +144,76 @@
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<?php echo $nome; ?>" required>
       </div>
+
       <div class="form-group">
         <label for="cpf">CPF:</label>
         <input type="text" id="cpf" name="cpf" value="<?php echo $cpf; ?>"required>
       </div>
+
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
       </div>
+      
       <div class="form-group">
         <label for="telefone">Telefone:</label>
         <input type="tel" id="telefone" name="telefone" value="<?php echo isset($telefone) ? $telefone : ''; ?>" required>
+      </div> <br><br>
+
+      <!-- <div class="form-group">
+        <label for="senha">Senha atual:</label><br>
+        <input type="password" id="atual_senha" name="atual_senha" required autocomplete="off" disabled>
+        <div class="input-imagem1-editar">
+      <img class="ver-senha-icon-atual" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha3()">
       </div>
+
       <div class="form-group">
-        <label for="senha">Senha atual:</label>
-        <input type="password" id="senha_atual" name="senha_atual">
+      <label for="nova_senha">NOVA SENHA:</label><br>
+      <input type="password" id="nova_senha" name="nova_senha" autocomplete="off" disabled>
+      <div class="input-imagem2-editar">
+        <img class="ver-senha-icon-nova" src="senha_oculta_nova.png" alt="Senha Oculta" onclick="verSenha()">
       </div>
-      <div class="input-imagem3">
-      <img class="ver-senha-icon-cadastro" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha()">
-      </div>
+
       <div class="form-group">
-        <label for="senha">Nova senha:</label>
-        <input type="password" id="nova_senha" name="nova_senha">
-      </div>
-      <div class="input-imagem3">
-      <img class="ver-senha-icon-cadastro" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha()">
-      </div>
-      <div class="form-group">
-        <label for="senha">Confirme a nova senha:</label>
-        <input type="password" id="confirma_nova_senha" name="confirma_nova_senha">
-      </div>
-      <div class="input-imagem3">
-      <img class="ver-senha-icon-cadastro" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha()">
-      </div><br><br>
+      <label for="confirma_senha">CONFIRMAR SENHA:</label><br>
+            <input type="password" id="confirma_senha" name="confirma_senha" autocomplete="off" disabled>
+            <div class="input-imagem3-editar">
+            <img class="ver-senha-icon-confirma" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha2()">
+      </div><br><br> -->
+
       <div class="form-group">
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="ATUALIZAR DADOS">
       <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
-      <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
-      
+      <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR" onclick="window.location.href = 'tela_principal_professor.php';">
+   
+<!-- 
+    <script>
+        function verificarSenhaAtual() {
+            // Obtém a senha atual do usuário
+            var senhaAtual = $("#senhaAtual").val();
+
+            // Envia uma solicitação AJAX ao banco de dados
+            $.ajax({
+                url: "consulta_senha.php",
+                type: "POST",
+                data: { senha: senhaAtual },
+                success: function(data) {
+                // Se a senha atual for válida, habilita os campos nova senha e confirmar senha
+                if (data.sucesso) {
+                    $("#novaSenha").removeAttr("disabled");
+                    $("#confirmarSenha").removeAttr("disabled");
+                } else {
+                    // Se a senha atual for inválida, desativa os campos nova senha e confirmar senha
+                    $("#novaSenha").attr("disabled", true);
+                    $("#confirmarSenha").attr("disabled", true);
+                }
+                },
+                error: function(error) {
+                console.log(error);
+                }
+            });
+            }
+    </script> -->
       <!-- Exibir a mensagem de erro caso exista -->
    <?php
         if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {

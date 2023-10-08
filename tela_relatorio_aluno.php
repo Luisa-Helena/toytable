@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="CSS/toytable.css">
     <link rel="stylesheet" href="CSS/mensagem_erro_login.css">
     <link rel="stylesheet" href="CSS/botao_sair.css">
+    <link rel="stylesheet" href="CSS/modal_relatorio.css">
 
     <style>
         * {
@@ -82,7 +83,7 @@
             </div>
             <div class="relatorio"> RELATÓRIO </div>
             <div class="botao">
-                <input type="submit" style="width: 120px;height:30px;text-align: center;" value="ENVIAR">
+                <input type="submit" style="width: 120px;height:30px;text-align: center;" value="ENVIAR" onClick="abrirModal()">
             </div>
             </form>
         </div>
@@ -97,10 +98,22 @@
             <div class="dados-jogo">TEMPO:
                 <div><span> ......... </span></div>
             </div>
-            <div class="editar">      
-                <input type="button" value="EDITAR" onClick="window.location.href = 'tela_editar_aluno.php';">
-        </div>
+
+            <div id="janela-modal" class="janela-modal">
+            <div class="modal">
+                <form action="cadastra_relatorio.php" method="POST">
+                    <div class="form-group">
+                        <label for="titulo">Titulo:</label>
+                        <input type="text" id="titulo" name="titulo" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+            </div>
+</div>
             <div class="botao-escuro" onclick="window.location.href = 'tela_lista_relatorio.php';"> TODOS RELATÓRIOS </div>
+            <div class="botao-editar" onclick="window.location.href = 'tela_editar_aluno.php';"> EDITAR DADOS </div>
             <div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>
 
         </div>

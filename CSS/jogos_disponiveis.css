@@ -1,0 +1,72 @@
+.fundo{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 275px;
+}
+
+.banner-jogo{
+    position: relative;
+    width:285px;
+    margin: 0 80px;
+    position: relative;
+    border-radius: 22px;
+    height: 400px;
+    top:150px;
+    background-color: #3E5F8A;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza verticalmente */
+    flex-direction: column;
+}
+
+.capa-jogo{
+    margin-top: 20px;
+    width:250px;
+    height: 240px;
+}
+
+.botao1 [type="button"]{
+    background-color: #006EFD; /*cor do botao*/
+    color: #000;
+    font-family: Graduate;
+    cursor: pointer;
+    border-radius: 33px;
+    margin-bottom: 40px;
+    margin-top: 55px;
+    font-weight: bold;
+    font-size: 30px;
+    width: 200px;
+    height: 50px;
+    border: none;
+}
+
+.botao2 [type="button"]{
+    background-color: #EF1C1C; /*cor do botao*/
+    color: #000;
+    font-family: Graduate;
+    cursor: pointer;
+    border-radius: 33px;
+    margin-bottom: 40px;
+    margin-top: 55px;
+    font-weight: bold;
+    font-size: 30px;
+    width: 200px;
+    height: 50px;
+    border: none;
+}
+
+.botao3 [type="button"]{
+    background-color: #FFF500; /*cor do botao*/
+    color: #000;
+    font-family: Graduate;
+    cursor: pointer;
+    border-radius: 33px;
+    margin-bottom: 40px;
+    margin-top: 55px;
+    font-weight: bold;
+    font-size: 30px;
+    width: 200px;
+    height: 50px;
+    border: none;
+}

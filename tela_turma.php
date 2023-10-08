@@ -105,17 +105,10 @@
 require "conexao.php";
 
 session_start();
-// var_dump($_SE SSION);
-$user_email = $_SESSION['user_email'];
+// var_dump($_SESSION);
 
-$sql = "SELECT id_professor FROM tb_professor WHERE email = '$user_email'";
-$result = $con->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $professor_id = $row["id_professor"];
-    $_SESSION['professor_id'] = $professor_id;
-
+   $professor_id = $_SESSION['professor_id'];
+    
     $sql_turmas = "SELECT nome FROM tb_turma WHERE cod_professor = $professor_id";
 
     $result_turmas = $con->query($sql_turmas);
@@ -169,7 +162,7 @@ if ($result->num_rows > 0) {
     } else {
         echo "Nenhuma turma encontrada para este professor.";
     }
-}
+
 
 echo "</tr></table>";
 

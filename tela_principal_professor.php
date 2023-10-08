@@ -3,12 +3,13 @@
 session_start();
 // var_dump($_SESSION); 
 require "conexao.php";
-if (isset($_SESSION['user_email'])) {
-    $user_email = $_SESSION['user_email'];
-    $sql = "SELECT p.id_professor, p.nome, p.CPF, p.telefone, p.senha, p.email, COUNT(t.id_turma) AS quantidade_turmas 
+if (isset($_SESSION['professor_id'])) {
+    $id_professor = $_SESSION["professor_id"];
+
+    $sql = "SELECT p.email, p.id_professor, p.nome, p.CPF, p.telefone, p.senha, p.email, COUNT(t.id_turma) AS quantidade_turmas 
             FROM tb_professor p
             LEFT JOIN tb_turma t ON p.id_professor = t.cod_professor
-            WHERE p.email = '$user_email' GROUP BY p.id_professor, p.nome, p.CPF, p.telefone, p.senha, p.email;";
+            WHERE p.id_professor = '$id_professor' GROUP BY p.email, p.nome, p.CPF, p.telefone, p.senha, p.email;";
     $result = $con->query($sql);
 
     // $stmt = $con->prepare($sql);
@@ -18,11 +19,11 @@ if (isset($_SESSION['user_email'])) {
 
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $_SESSION["professor_id"] = $row["id_professor"];
         $nome = $row["nome"];
         $cpf = $row["CPF"];
         $email = $row["email"];
         $telefone = $row["telefone"];
+        $email = $row["email"];
         $qtd_turmas = $row["quantidade_turmas"];
     } else {
         echo "Nenhum resultado encontrado.";
@@ -97,7 +98,7 @@ if (isset($_SESSION['user_email'])) {
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
 
     </div>
-    <br><br><br><br><br><br>    
+    <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
     <div class="menu">
         <div class="botao-perfil">
@@ -125,8 +126,19 @@ if (isset($_SESSION['user_email'])) {
             echo "<div>TOTAL DE TURMAS: <span>$qtd_turmas</span></div>";
             ?>
         </div>
-        <div class="editar">      
-                <input type="button" value="EDITAR" onClick="window.location.href = 'tela_editar_professor.php';">
+        <div class="editar">
+            <form method="post">
+            <input type="submit" name="setSessionButton" value="SENHA">
+            </form>
+
+            <?php
+            if (isset($_POST['setSessionButton'])) {
+                $_SESSION['titulo'] = 'ALTERAR SENHA';
+                header("Location: form_esqueceu_senha.php");
+                exit(); 
+            }
+            ?>
+            <input type="button" value="EDITAR" onClick="window.location.href = 'tela_editar_professor.php';">
         </div>
     </div>
 </body>

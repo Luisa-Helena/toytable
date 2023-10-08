@@ -57,12 +57,50 @@
       margin-left: 5px; 
     
 }
+
+.ver-senha-icon-atual {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  margin-left: 5px; 
+
+}
 .input-imagem3{
   padding: 8px;
   border-radius: 10px;
   width: 350px;
   height:10px;
   top: 282px;
+  left:370px;
+  position: absolute;
+}
+
+.input-imagem1-editar{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top: 47px;
+  left:370px;
+  position: absolute;
+}
+
+.input-imagem2-editar{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top:99px;
+  left:370px;
+  position: absolute;
+}
+
+.input-imagem3-editar{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top: 152px;
   left:370px;
   position: absolute;
 }

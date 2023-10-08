@@ -62,3 +62,19 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.editar [type="submit"]{
+  border: none;
+  position: relative;
+  border-radius: 22px;
+  float: right;
+  margin-top: 20px;
+  margin-right: 10px;
+  height: 25px;
+  width: 95px;
+  top: 22px;  
+  background-color: #5783BC;
+  font-family: Graduate;
+  font-size: 20px;
+  cursor: pointer;
+}

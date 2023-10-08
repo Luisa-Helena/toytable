@@ -117,7 +117,7 @@ textarea::placeholder {
     
 .menu {
     width: 300px;
-    height: 375px;
+    height: 425px;
     background-color: #CADFFB;
     margin-right: 230px;
     margin-left: auto;
@@ -176,6 +176,22 @@ textarea::placeholder {
 }
 
 .botao-voltar{
+    color: #000;
+    font-family: Graduate;
+    background-color: #5783BC; /*cor do botao*/
+    cursor: pointer;
+    border-radius: 22px;
+    margin-bottom: 10px;
+    margin-left: 25px;
+    width: 250px;
+    height: 45px;
+    font-size: 20px;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+}
+
+.botao-editar{
     color: #000;
     font-family: Graduate;
     background-color: #5783BC; /*cor do botao*/

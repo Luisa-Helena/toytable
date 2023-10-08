@@ -86,6 +86,7 @@
 
         <div class="form-container">
             <div class="form-group">
+                <form action="login_aluno.php" method="POST">
                 <label for="turma">Turma:</label><br>
                 <select id="turma" name="turma" required>
                     <option value="selected">Selecione uma Turma</option>
@@ -93,7 +94,7 @@
                     while ($row = $resultado->fetch_assoc()) {
                         echo "<option value='" . $row['id_turma'] . "'>" . $row['nome'] . "</option>";
                     }
-                    ?>
+                    ?>  
                 </select>
             </div><br>
             <div class="form-group">
@@ -103,11 +104,12 @@
                 </div> 
             
             <div class="form-group">
-                <input type="button" id="Botao" style="margin-top:100px; width: 197px;height:10;text-align: center;" value="ENTRAR" onclick="window.location.href = 'tela_aluno_jogo.php';" disabled>
+                <input type="submit" id="Botao" style="margin-top:100px; width: 197px;height:10;text-align: center;" value="ENTRAR" disabled>
                 <input type="Button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()"></br>
                 <input type="Button" style="width: 398px;height:10;text-align: center;" value="ESQUECI A SENHA"></br>
                 <input type="Button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
             </div>
+                </form>
                 <!-- Exibir a mensagem de erro caso exista -->
                 <?php
                 if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
@@ -123,7 +125,6 @@
                     $("#turma").change(function() {
                         var turmaSelecionada = $(this).val();
 
-                        // Faça uma requisição AJAX para carregar os alunos da turma selecionada
                         $.ajax({
                             type: "POST",
                             url: "carregar_alunos.php",
@@ -146,6 +147,7 @@
                 var Botao = document.getElementById("Botao");
 
                 campoSelect.addEventListener('change', function() {
+                    debugger;
                     if (campoSelect.value !== '') {
                         Botao.disabled = false;
                     } else {
