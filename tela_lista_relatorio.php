@@ -63,6 +63,7 @@
             });
         </script>
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+        <div class="titulo"> TODOS RELATÓRIOS </div>
     </div>
     <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>

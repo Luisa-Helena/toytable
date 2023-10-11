@@ -38,36 +38,43 @@
     </style>
 
 </head>
+
 <body>
-<div class="header">
+    <div class="header">
 
-<div class="sair">
-    <input type="button" value="Sair" id="botaoSair">
-</div>
+        <div class="sair">
+            <input type="button" value="Sair" id="botaoSair">
+        </div>
 
-<script>
-    document.getElementById('botaoSair').addEventListener('click', function() {
+        <script>
+            document.getElementById('botaoSair').addEventListener('click', function() {
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'encerrar_sessao.php', true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert('Você será redirecionado para a página inicial.');
-                window.location.href = 'home.php';
-            }
-        };
-        xhr.send();
-    });
-</script>
-<img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'encerrar_sessao.php', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert('Você será redirecionado para a página inicial.');
+                        window.location.href = 'home.php';
+                    }
+                };
+                xhr.send();
+            });
+        </script>
+        <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+        <div class="titulo"> RELATÓRIO </div>
 
-</div>
+    </div>
     <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
     <div class="container">
         <div class="form-container">
             <div class="caixa">
                 <form action="cadastrar_relatorio.php" method="POST">
+                    <label for="titulo" style="font-weight: bold; margin-left:15px; margin-top:10px; font-size:20px;">Título:
+                    </label>
+                    <input type="text" id="titulo" name="titulo" style="margin-top:10px" required>
+                    <label for="data" style="font-weight: bold; margin-left:50px; margin-top:10px; font-size:20px;">Data:</label>
+                    <input type="date" id="data" name="data" style="margin-top:10px;" required>
                     <div class="campo_texto">
                         <textarea id="campo_texto" name="campo_texto" required placeholder="Digite o relatório aqui..."></textarea>
                     </div>
@@ -100,18 +107,26 @@
             </div>
 
             <div id="janela-modal" class="janela-modal">
-            <div class="modal">
-                <form action="cadastra_relatorio.php" method="POST">
-                    <div class="form-group">
-                        <label for="titulo">Titulo:</label>
-                        <input type="text" id="titulo" name="titulo" required>
-                    </div><br>
-                    <div class="form-group">
-                        <label for="data">Data:</label>
-                        <input type="date" id="data" name="data" required>
-                    </div>
+                <div class="modal">
+                    <form action="cadastra_relatorio.php" method="POST">
+                        <div class="form-group">
+                            <label for="titulo">Titulo:</label>
+                            <input type="text" id="titulo" name="titulo" required>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="data">Data:</label>
+                            <input type="date" id="data" name="data" required>
+                        </div>
+                </div>
             </div>
-</div>
+            
+       <!-- Exibir a mensagem de erro caso exista -->
+   <?php
+        if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
+          echo '<div class="mensagem-erro">' . $_SESSION['mensagemErro'] . '</div>';
+          $_SESSION['mensagemErro'] = ''; // Limpa a mensagem de erro da sessão após exibi-la
+        }
+        ?>
             <div class="botao-escuro" onclick="window.location.href = 'tela_lista_relatorio.php';"> TODOS RELATÓRIOS </div>
             <div class="botao-editar" onclick="window.location.href = 'tela_editar_aluno.php';"> EDITAR DADOS </div>
             <div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>

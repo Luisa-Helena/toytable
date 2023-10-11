@@ -142,78 +142,29 @@
     <form action= "editar_professor.php" method="POST">
       <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" value="<?php echo $nome; ?>" required>
+        <input type="text" id="nome" name="nome" value="<?php echo $nome; ?>" required autocomplete="off">
       </div>
 
       <div class="form-group">
         <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" value="<?php echo $cpf; ?>"required>
+        <input type="text" id="cpf" name="cpf" value="<?php echo $cpf; ?>"required autocomplete="off">
       </div>
 
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
+        <input type="email" id="email" name="email" value="<?php echo $email; ?>" required autocomplete="off">
       </div>
       
       <div class="form-group">
         <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" value="<?php echo isset($telefone) ? $telefone : ''; ?>" required>
+        <input type="tel" id="telefone" name="telefone" value="<?php echo isset($telefone) ? $telefone : ''; ?>" required autocomplete="off">
       </div> <br><br>
-
-      <!-- <div class="form-group">
-        <label for="senha">Senha atual:</label><br>
-        <input type="password" id="atual_senha" name="atual_senha" required autocomplete="off" disabled>
-        <div class="input-imagem1-editar">
-      <img class="ver-senha-icon-atual" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha3()">
-      </div>
-
-      <div class="form-group">
-      <label for="nova_senha">NOVA SENHA:</label><br>
-      <input type="password" id="nova_senha" name="nova_senha" autocomplete="off" disabled>
-      <div class="input-imagem2-editar">
-        <img class="ver-senha-icon-nova" src="senha_oculta_nova.png" alt="Senha Oculta" onclick="verSenha()">
-      </div>
-
-      <div class="form-group">
-      <label for="confirma_senha">CONFIRMAR SENHA:</label><br>
-            <input type="password" id="confirma_senha" name="confirma_senha" autocomplete="off" disabled>
-            <div class="input-imagem3-editar">
-            <img class="ver-senha-icon-confirma" src="senha_oculta.png" alt="Senha Oculta" onclick="verSenha2()">
-      </div><br><br> -->
 
       <div class="form-group">
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="ATUALIZAR DADOS">
       <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
       <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR" onclick="window.location.href = 'tela_principal_professor.php';">
    
-<!-- 
-    <script>
-        function verificarSenhaAtual() {
-            // Obtém a senha atual do usuário
-            var senhaAtual = $("#senhaAtual").val();
-
-            // Envia uma solicitação AJAX ao banco de dados
-            $.ajax({
-                url: "consulta_senha.php",
-                type: "POST",
-                data: { senha: senhaAtual },
-                success: function(data) {
-                // Se a senha atual for válida, habilita os campos nova senha e confirmar senha
-                if (data.sucesso) {
-                    $("#novaSenha").removeAttr("disabled");
-                    $("#confirmarSenha").removeAttr("disabled");
-                } else {
-                    // Se a senha atual for inválida, desativa os campos nova senha e confirmar senha
-                    $("#novaSenha").attr("disabled", true);
-                    $("#confirmarSenha").attr("disabled", true);
-                }
-                },
-                error: function(error) {
-                console.log(error);
-                }
-            });
-            }
-    </script> -->
       <!-- Exibir a mensagem de erro caso exista -->
    <?php
         if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {

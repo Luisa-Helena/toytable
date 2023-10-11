@@ -50,7 +50,7 @@
 
       <div class="form-group">        
         <label for="codigo">CÓDIGO:</label><br>
-        <input type="text" id="codigo" name="codigo" required>
+        <input type="text" id="codigo" name="codigo" required autocomplete="off">
       </div></br></br></br></br><br>
       
       <div class="form-group">

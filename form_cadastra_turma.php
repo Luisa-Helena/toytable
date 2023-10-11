@@ -72,19 +72,19 @@
     <form action="cadastrar_turma.php" method="POST">
       <div class="form-group">
         <label for="nome">Nome da turma:</label>
-        <input type="text" id="nome" name="nome" required>
+        <input type="text" id="nome" name="nome" required autocomplete="off">
       </div>
       <div class="form-group">
         <label for="qtd_aluno">Quantidade de alunos:</label>
-        <input type="text" id="qtd_aluno" name="qtd_aluno" required>
+        <input type="text" id="qtd_aluno" name="qtd_aluno"  maxlength="2" autocomplete="off" required>
       </div>
       <div class="form-group">
         <label for="faixa_etaria">Faixa Etária:</label><br>
-        <select id="faixa_etaria" name="faixa_etaria" required>
+        <select id="faixa_etaria" name="faixa_etaria" required autocomplete="off">
             <option value="selected"> Selecione uma faixa etária</option>
-            <option value="a">1-3 anos</option>
-            <option value="b">4-5 anos</option>
-            <option value="c">6 anos</option>
+            <option value="1-3 anos">1-3 anos</option>
+            <option value="4-5 anos">4-5 anos</option>
+            <option value="6 anos">6 anos</option>
         </select>
     </div> <br> <br> <br> <br>
 

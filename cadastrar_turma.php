@@ -32,7 +32,6 @@ if ($faixa_etaria != "selected") {
     }
 } else {
     $_SESSION['mensagemErro'] = 'Por favor selecione uma faixa-etária válida ' . $con->error;
-    header("Location: form_cadastra_aluno.php");
-    exit;
+    header("Location: form_cadastra_turma.php");
 }
 ?>

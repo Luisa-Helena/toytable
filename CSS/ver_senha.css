@@ -104,3 +104,23 @@
   left:370px;
   position: absolute;
 }
+
+.input-imagem1-cadastrar{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top: 278px;
+  left:370px;
+  position: absolute;
+}
+
+.input-imagem2-cadastrar{
+  padding: 8px;
+  border-radius: 10px;
+  width: 350px;
+  height:10px;
+  top:350px;
+  left:370px;
+  position: absolute;
+}

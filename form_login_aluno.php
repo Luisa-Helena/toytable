@@ -88,7 +88,7 @@
             <div class="form-group">
                 <form action="login_aluno.php" method="POST">
                 <label for="turma">Turma:</label><br>
-                <select id="turma" name="turma" required>
+                <select id="turma" name="turma" required autocomplete="off">
                     <option value="selected">Selecione uma Turma</option>
                     <?php
                     while ($row = $resultado->fetch_assoc()) {
@@ -100,7 +100,7 @@
             <div class="form-group">
                 <label for="nome">ALUNO:</label><br>
                 <select id="nome" name="nome" required>
-                    <option value="selected">Selecione um aluno</option>
+                    <option value="selected" autocomplete="off">Selecione um aluno</option>
                 </div> 
             
             <div class="form-group">

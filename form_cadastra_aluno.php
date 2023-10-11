@@ -91,12 +91,12 @@
         <form action="cadastrar_aluno.php" method="POST">
             <div class="form-group">
                 <label for="nome">Nome do aluno:</label>
-                <input type="text" id="nome" name="nome" required>
+                <input type="text" id="nome" name="nome" autocomplete="off" required>
             </div><br>
             <!-- COMBOBOX DAS TURMAS, DADOS VINDOS DO BANCO -->
             <div class="form-group">
                 <label for="opcoes">Turma:</label>
-                <select id="opcoes" name="opcoes" required>
+                <select id="opcoes" name="opcoes" required autocomplete="off">
                 <option value="selected">Selecione uma Turma</option>
                     <?php require "conexao.php";
                     $id_professor=$_SESSION['professor_id'];

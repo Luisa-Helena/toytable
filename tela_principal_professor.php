@@ -50,6 +50,8 @@ if (isset($_SESSION['professor_id'])) {
     <link rel="stylesheet" href="CSS/toytable.css">
     <link rel="stylesheet" href="CSS/menu.css">
     <link rel="stylesheet" href="CSS/botao_sair.css">
+    <link rel="stylesheet" href="CSS/link.css">
+    <link rel="stylesheet" href="CSS/modal.css">
 
     <style>
         * {
@@ -128,18 +130,56 @@ if (isset($_SESSION['professor_id'])) {
         </div>
         <div class="editar">
             <form method="post">
-            <input type="submit" name="setSessionButton" value="SENHA">
+                <input type="submit" name="setSessionButton" value="SENHA">
             </form>
 
             <?php
             if (isset($_POST['setSessionButton'])) {
                 $_SESSION['titulo'] = 'ALTERAR SENHA';
                 header("Location: form_esqueceu_senha.php");
-                exit(); 
+                exit();
             }
             ?>
             <input type="button" value="EDITAR" onClick="window.location.href = 'tela_editar_professor.php';">
         </div>
+        <div class="desativa">
+            <label for="linkdesativa" id="linkdesativa">Desativar conta</label>
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2>Confirmação</h2>
+                <p>Tem certeza de que deseja desativar sua conta?</p>
+                <button id="cancelar">Cancelar</button>
+                <button id="sim">Sim</button>
+            </div>
+        </div>
+        <script>
+            document.getElementById('linkdesativa').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'block';
+            });
+
+            document.getElementById('cancelar').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'none';
+            });
+
+            document.getElementById('sim').addEventListener('click', function() {
+                // Execute a solicitação AJAX para o arquivo PHP
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'desativa_professor.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = xhr.responseText;
+                        alert(response); // Exibe a resposta do servidor
+                        document.getElementById('modal').style.display = 'none'; 
+                        window.location.href = 'home.php';
+                    }
+                };
+                xhr.send();
+            });
+        </script>
+
     </div>
 </body>
 

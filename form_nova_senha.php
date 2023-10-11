@@ -159,4 +159,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nova_senha']) && isse
           $_SESSION['mensagemErro'] = ''; // Limpa a mensagem de erro da sessão após exibi-la
         }
         ?>
-

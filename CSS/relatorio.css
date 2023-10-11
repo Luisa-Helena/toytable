@@ -79,8 +79,8 @@
 
 .campo_texto textarea{
     background-color: #AFCDEA;
-    width: 607px;
-    height: 433px;
+    width: 590px;
+    height: 355px;
     border: none;
     text-align: left;
     cursor: text;
@@ -88,6 +88,9 @@
     padding:10px;
     resize: none; 
     overflow-y: auto;
+    border-radius: 20px;
+    margin-top:20px;
+    margin-left: 7.5px;
     }
 
 textarea::placeholder {
@@ -205,4 +208,30 @@ textarea::placeholder {
     align-items: center;
     display:flex;
     justify-content: center;
+}
+.espacamento{
+    margin-left: 50px;
+}
+
+/* Estilização básica */
+input[type="date"] {
+    padding: 5px;
+    background-color: #5783BC;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+/* Personalize o estilo quando o campo estiver em foco (focus) */
+input[type="date"]:focus {
+    border-color: #AFCDEA;
+    box-shadow: 0 0 5px #AFCDEA;
+}
+
+input[type="text"] {
+    background-color: #AFCDEA;
+    border:1px solid #5783BC;
+    border-radius: 12px;
+    height: 25px;
+    width: 250px;
 }

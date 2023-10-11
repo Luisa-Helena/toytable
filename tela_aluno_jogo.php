@@ -70,7 +70,6 @@ if ($result_turma && $result_turma->num_rows > 0) {
 
         <script>
             document.getElementById('botaoSair').addEventListener('click', function() {
-
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'encerrar_sessao.php', true);
                 xhr.onreadystatechange = function() {
@@ -88,7 +87,6 @@ if ($result_turma && $result_turma->num_rows > 0) {
 <br><br><br><br><br><br>
 <div class="footer">Email para contato: toytable2023@gmail.com</div>
 <div class="form-container">
-<div class="dados">
         <div class="informacoes">
             <?php
             
@@ -97,7 +95,6 @@ if ($result_turma && $result_turma->num_rows > 0) {
             echo "<div>Turma: $nome_turma</div>";
             ?>
         </div>
-</div>
 </div>
 <div class="fundo">
     <div class="banner-jogo">

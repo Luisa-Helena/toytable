@@ -40,17 +40,28 @@ function validaCPF($cpf) {
 }
 
     $nome_professor=$_POST["nome"];
+    
     $cpf=$_POST["cpf"];
     $email=$_POST["email"];
     $telefone=$_POST["telefone"];
-    $senha=$_POST["senha"];
+    $senha = $_POST['senha'];
+    $confirma_senha = $_POST['confirma_senha'];
+
     // // Criptografar a senha
     // $senhaCriptografada = password_hash($senha, PASSWORD_BCRYPT);
 
+    $val_status = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ? and status == 0";
     $val_email = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ?";
     $val_cpf = "SELECT COUNT(*) as count FROM tb_professor WHERE cpf = ?";
     $val_tel = "SELECT COUNT(*) as count FROM tb_professor WHERE telefone = ?";
    
+    
+    // Validação para status
+    $stmt_status = $con->prepare($val_status);
+    $stmt_status->bind_param("s", $email);
+    $stmt_status->execute();
+    $result_status = $stmt_status->get_result();
+    $row_status = $result_status->fetch_assoc();
     
     // Validação para o email
     $stmt_email = $con->prepare($val_email);
@@ -72,35 +83,36 @@ function validaCPF($cpf) {
     $stmt_tel->execute();
     $result_tel = $stmt_tel->get_result();
     $row_tel = $result_tel->fetch_assoc();
-    
-    
-    if ($row_email['count'] > 0) {
-        $_SESSION['mensagemErro'] = 'Email já está em uso. Por favor, tente novamente.';
-        header("Location: form_cadastra_professor.php");
-        exit;
-        } else if ($row_cpf['count'] > 0) {
-            $_SESSION['mensagemErro'] = 'CPF já está em uso. Por favor, tente novamente.';
+
+        if ($row_email['count'] > 0) {
+            
+            $_SESSION['mensagemErro'] = 'Email já está em uso. Por favor, tente novamente.';
             header("Location: form_cadastra_professor.php");
             exit;
-                }else if ($row_tel['count'] > 0) {
-                    $_SESSION['mensagemErro'] = 'O telefone já está em uso. Por favor, tente novamente.';
-                    header("Location: form_cadastra_professor.php");
-                    exit;
-                }else if (!validaCPF($cpf)) {
-                    $_SESSION['mensagemErro'] = 'CPF inválido. Por favor, insira um CPF válido.';
-                    header("Location: form_cadastra_professor.php");
-                    exit;
-                }else{
-                    $comandoSql="insert into tb_professor (nome, cpf, email, telefone, senha)
-                    values ('$nome_professor','$cpf', '$email', '$telefone', '$senha' )";
+            } else if ($row_cpf['count'] > 0) {
+                $_SESSION['mensagemErro'] = 'CPF já está em uso. Por favor, tente novamente.';
+                header("Location: form_cadastra_professor.php");
+                exit;
+                    }else if ($row_tel['count'] > 0) {
+                        $_SESSION['mensagemErro'] = 'O telefone já está em uso. Por favor, tente novamente.';
+                        header("Location: form_cadastra_professor.php");
+                        exit;
+                    }else if (!validaCPF($cpf)) {
+                        $_SESSION['mensagemErro'] = 'CPF inválido. Por favor, insira um CPF válido.';
+                        header("Location: form_cadastra_professor.php");
+                        exit;
+                    }else if ($senha == $confirma_senha) {
+                        $comandoSql="insert into tb_professor (nome, cpf, email, telefone, senha)
+                        values ('$nome_professor','$cpf', '$email', '$telefone', '$senha' )";
 
-                    $resultado=mysqli_query($con,$comandoSql);
+                        $resultado=mysqli_query($con,$comandoSql);
 
-                    if($resultado==true){
-                    $_SESSION['user_email'] = $email;
-                        header("Location: tela_principal_professor.php");
-                    }else
-                    echo "Erro no cadastro";
-                    }
-    
+                        if($resultado==true){
+                        $_SESSION['user_email'] = $email;
+                            header("Location: tela_principal_professor.php");
+                        }else{
+                            $_SESSION['mensagemErro'] = "As senhas não coincidem. Tente novamente.";
+                            header("Location: form_cadastra_professor.php");
+                        }
+    }
 ?>
