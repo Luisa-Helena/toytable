@@ -78,11 +78,9 @@ if (isset($_SESSION['professor_id'])) {
 
 <body>
     <div class="header">
-
         <div class="sair">
             <input type="button" value="Sair" id="botaoSair">
         </div>
-
         <script>
             document.getElementById('botaoSair').addEventListener('click', function() {
 
@@ -141,46 +139,6 @@ if (isset($_SESSION['professor_id'])) {
             }
             ?>
             <input type="button" value="EDITAR" onClick="window.location.href = 'tela_editar_professor.php';">
-        </div>
-        <div class="desativa">
-            <label for="linkdesativa" id="linkdesativa">Desativar conta</label>
-        </div>
-
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <h2>Confirmação</h2>
-                <p>Tem certeza de que deseja desativar sua conta?</p>
-                <button id="cancelar">Cancelar</button>
-                <button id="sim">Sim</button>
-            </div>
-        </div>
-        <script>
-            document.getElementById('linkdesativa').addEventListener('click', function() {
-                document.getElementById('modal').style.display = 'block';
-            });
-
-            document.getElementById('cancelar').addEventListener('click', function() {
-                document.getElementById('modal').style.display = 'none';
-            });
-
-            document.getElementById('sim').addEventListener('click', function() {
-                // Execute a solicitação AJAX para o arquivo PHP
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'desativa_professor.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        var response = xhr.responseText;
-                        alert(response); // Exibe a resposta do servidor
-                        document.getElementById('modal').style.display = 'none'; 
-                        window.location.href = 'home.php';
-                    }
-                };
-                xhr.send();
-            });
-        </script>
-
-    </div>
+        </div>    
 </body>
-
 </html>

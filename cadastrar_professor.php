@@ -50,7 +50,7 @@ function validaCPF($cpf) {
     // // Criptografar a senha
     // $senhaCriptografada = password_hash($senha, PASSWORD_BCRYPT);
 
-    $val_status = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ? and status == 0";
+    $val_status = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ? and status = 0";
     $val_email = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ?";
     $val_cpf = "SELECT COUNT(*) as count FROM tb_professor WHERE cpf = ?";
     $val_tel = "SELECT COUNT(*) as count FROM tb_professor WHERE telefone = ?";
@@ -84,8 +84,11 @@ function validaCPF($cpf) {
     $result_tel = $stmt_tel->get_result();
     $row_tel = $result_tel->fetch_assoc();
 
-        if ($row_email['count'] > 0) {
-            
+    if ($row_status['count'] > 0) {
+        $_SESSION['mensagemErro'] = 'Parece que você já tem uma conta, para reativa-lá basta fazer login';
+        header("Location: form_login_professor.php");
+        exit;
+        if ($row_email['count'] > 0) {            
             $_SESSION['mensagemErro'] = 'Email já está em uso. Por favor, tente novamente.';
             header("Location: form_cadastra_professor.php");
             exit;
@@ -115,4 +118,5 @@ function validaCPF($cpf) {
                             header("Location: form_cadastra_professor.php");
                         }
     }
+}
 ?>

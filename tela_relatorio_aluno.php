@@ -87,6 +87,7 @@
                     $nome_aluno = $_SESSION['nome_aluno_sel'];
                     echo "<div><span>$nome_aluno</span></div>";   ?>
                 </div>
+                <div class="botao-editar" onclick="window.location.href = 'tela_editar_aluno.php';"> EDITAR </div>
             </div>
             <div class="relatorio"> RELATÓRIO </div>
             <div class="botao">
@@ -105,21 +106,6 @@
             <div class="dados-jogo">TEMPO:
                 <div><span> ......... </span></div>
             </div>
-
-            <div id="janela-modal" class="janela-modal">
-                <div class="modal">
-                    <form action="cadastra_relatorio.php" method="POST">
-                        <div class="form-group">
-                            <label for="titulo">Titulo:</label>
-                            <input type="text" id="titulo" name="titulo" required>
-                        </div><br>
-                        <div class="form-group">
-                            <label for="data">Data:</label>
-                            <input type="date" id="data" name="data" required>
-                        </div>
-                </div>
-            </div>
-            
        <!-- Exibir a mensagem de erro caso exista -->
    <?php
         if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
@@ -128,7 +114,6 @@
         }
         ?>
             <div class="botao-escuro" onclick="window.location.href = 'tela_lista_relatorio.php';"> TODOS RELATÓRIOS </div>
-            <div class="botao-editar" onclick="window.location.href = 'tela_editar_aluno.php';"> EDITAR DADOS </div>
             <div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>
 
         </div>

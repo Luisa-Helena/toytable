@@ -1,4 +1,5 @@
-<?php require_once "conexao.php"; ?>
+<?php require_once "conexao.php";
+        session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +11,12 @@
     <link rel="stylesheet" href="CSS/lista_aluno.css">
     <link rel="stylesheet" href="CSS/barra_superior.css">
     <link rel="stylesheet" href="CSS/titulo.css">
+    <link rel="stylesheet" href="CSS/link.css">
     <link rel="stylesheet" href="CSS/barra_inferior.css">
     <link rel="stylesheet" href="CSS/toytable.css">
     <link rel="stylesheet" href="CSS/mensagem_erro_login.css">
     <link rel="stylesheet" href="CSS/botao_sair.css">
+    <link rel="stylesheet" href="CSS/barra_pesquisa.css">
     <link rel="stylesheet" href="CSS/caixa_dados_professor.css">
 
     <style>
@@ -67,13 +70,80 @@
     </div>
     <div class="form-container">
         <div class="aluno"> ALUNOS </div>
-        <?php
-        session_start();
+        <div class="search-box" id="search-box">
+            <input type="text" id="search-text" class="search-text" placeholder="Pesquisar">
+            <a href="#" class="search-button" id="search-button">
+                <img src="CSS/imagens/lupa.svg" alt="lupa.svg" height="13" width="13">
+            </a>
+        </div>
 
+        <!-- FAZ COM QUE A BARRA DE PESQUISA APAREÇA E  DESAPAREÇA  -->
+        <script>
+            const searchBox = document.querySelector('.search-box');
+            const searchInput = document.querySelector('.search-text');
+            const searchButton = document.querySelector('.search-button');
+
+            searchInput.addEventListener('focus', function() {
+                searchBox.classList.add('active');
+            });
+            document.addEventListener('click', function(event) {
+                const isClickInsideSearchBox = searchBox.contains(event.target);
+
+                if (!isClickInsideSearchBox) {
+                    searchBox.classList.remove('active');
+                }
+            });
+
+            searchButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                searchInput.focus();
+                searchBox.classList.add('active');
+            });
+        </script>
+
+
+<!-- FUNÇÃO PARA EXIBIR O RESULTADO DA BUSCA -->
+<script>
+    // debugger;
+// Criei um objeto XMLHttpRequest
+var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+
+        var response = JSON.parse(xhr.responseText);
+
+        // Exibe os resultados da pesquisa
+        var searchResults = document.querySelector('.search-results');
+        searchResults.innerHTML = '';
+
+        for (var i = 0; i < response.length; i++) {
+            var aluno = response[i];
+            searchResults.innerHTML += '<li>' + aluno.nome + '</li>';
+        }
+
+        // Exibe a div com os resultados da pesquisa
+        searchResults.style.display = 'block';
+    }
+};
+
+document.querySelector('#search-box').addEventListener('input', function(event) {
+    var searchText = event.target.value;
+
+    if (searchText !== '') {
+        xhr.open('GET', 'pesquisa_aluno.php?searchText=' + encodeURIComponent(searchText), true);
+        xhr.send();
+    }
+});
+</script>
+
+<div class="search-results"></div>
+
+        <?php 
         if (isset($_GET['idTurmaSel'])) {
             $idTurmaSel = $_GET['idTurmaSel'];
 
-            $sql = "SELECT nome FROM tb_aluno WHERE cod_turma = '$idTurmaSel'";
+            $sql = "SELECT nome FROM tb_aluno WHERE cod_turma = '$idTurmaSel' and status = 1";
             $result = $con->query($sql);
             echo "<table>";
             echo "<div class='teste'>";
@@ -89,6 +159,19 @@
                 }
             } ?>
     </div>
+    <div class="lista-desativados">
+        <a href="#" id="link">Alunos desativados dessa turma</a>
+    </div>
+    </div>
+
+    <!-- TORNA A FRASE CLICAVEL -->
+    <script>
+        document.getElementById('link').addEventListener('click', function() {
+            window.location.href = 'tela_listar_aluno_desativados.php';
+        });
+    </script>
+
+    <!-- FUNÇÃO PARA IR PRA TELA DE RELATÓRIO DO ALUNO CLICADO -->
     <script>
         function Aluno(nomeAluno) {
             if (nomeAluno && nomeAluno.trim() !== '') {
@@ -141,9 +224,11 @@
     <?php
     $idTurmaSel = $con->real_escape_string($idTurmaSel);
     $sql = "SELECT t.nome, t.qtd_aluno, t.faixa_etaria, COUNT(a.id_aluno) AS cont_aluno
-            FROM tb_turma t
-            LEFT JOIN tb_aluno a ON t.id_turma = a.cod_turma
-            WHERE t.id_turma = '$idTurmaSel' GROUP BY t.nome, t.qtd_aluno, t.faixa_etaria;";
+        FROM tb_turma t
+        LEFT JOIN tb_aluno a ON t.id_turma = a.cod_turma
+        WHERE t.id_turma = '$idTurmaSel' AND a.status = 1
+        GROUP BY t.nome, t.qtd_aluno, t.faixa_etaria;";
+
     $result = $con->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -155,7 +240,7 @@
     } else {
         echo "Nenhum resultado encontrado.";
     }
-  
+
 
     ?>
     <div class="dados">
@@ -170,7 +255,7 @@
             echo "<div>Alunos cadastrados: $cont_aluno</div>";
             ?>
         </div>
-</div>
+    </div>
 </div>
 <div class="botao" onclick="window.location.href = 'form_cadastra_aluno.php';">CADASTRAR ALUNO</div>
 <div class="botao-editar">
@@ -178,5 +263,5 @@
 </div>
 <div class="botao-voltar" onclick="window.location.href = 'tela_turma.php';">VOLTAR</div>
 </body>
-
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

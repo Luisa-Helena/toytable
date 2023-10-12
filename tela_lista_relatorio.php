@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="CSS/caixa_dados_professor.css">
     <link rel="stylesheet" href="CSS/barra_superior.css">
     <link rel="stylesheet" href="CSS/titulo.css">
+    <link rel="stylesheet" href="CSS/link.css">
     <link rel="stylesheet" href="CSS/barra_inferior.css">
     <link rel="stylesheet" href="CSS/toytable.css">
     <link rel="stylesheet" href="CSS/menu.css">
@@ -91,7 +92,7 @@
                     echo '</td>';
                 }
             } else {
-                echo "Nenhuma turma encontrada para este professor.";
+                echo "Nenhum relatório feito ainda para esse aluno";
             }
             ?>
         </tr>

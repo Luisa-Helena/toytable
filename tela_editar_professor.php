@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="CSS/botoes_input.css">
     <link rel="stylesheet" href="CSS/barra_superior.css">
     <link rel="stylesheet" href="CSS/titulo.css">
+    <link rel="stylesheet" href="CSS/modal.css">
+    <link rel="stylesheet" href="CSS/link.css">
     <link rel="stylesheet" href="CSS/toytable.css"> 
     <link rel="stylesheet" href="CSS/ver_senha.css">
     <link rel="stylesheet" href="CSS/barra_inferior.css">    
@@ -159,6 +161,45 @@
         <label for="telefone">Telefone:</label>
         <input type="tel" id="telefone" name="telefone" value="<?php echo isset($telefone) ? $telefone : ''; ?>" required autocomplete="off">
       </div> <br><br>
+    </form>
+
+      <div class="desativa">
+            <label for="linkdesativa" id="linkdesativa">Desativar conta</label>
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2>Confirmação</h2>
+                <p>Tem certeza de que deseja desativar sua conta?</p>
+                <button id="cancelar">Cancelar</button>
+                <button id="sim">Sim</button>
+            </div>
+        </div>
+        <script>
+            document.getElementById('linkdesativa').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'block';
+            });
+
+            document.getElementById('cancelar').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'none';
+            });
+
+            document.getElementById('sim').addEventListener('click', function() {
+                // Execute a solicitação AJAX para o arquivo PHP
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'desativa_professor.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = xhr.responseText;
+                        alert(response); // Exibe a resposta do servidor
+                        document.getElementById('modal').style.display = 'none'; 
+                        window.location.href = 'home.php';
+                    }
+                };
+                xhr.send();
+            });
+        </script>
 
       <div class="form-group">
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="ATUALIZAR DADOS">

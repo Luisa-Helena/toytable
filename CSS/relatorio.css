@@ -44,6 +44,7 @@
     border-radius: 22px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .informacao{
@@ -106,7 +107,7 @@ textarea::placeholder {
 .botao [type="submit"] {
     font-family: Graduate;
     color: #000;
-    background-color: #A0C5F7; /*cor do botao*/
+    background-color: #5783BC; /*cor do botao*/
     cursor: pointer;
     border-radius: 22px;
     font-size: 20px;
@@ -115,7 +116,7 @@ textarea::placeholder {
 
 
 .botao [type="submit"]:hover {
-    background-color: #6495ED;
+    background-color: #7baada;
     }   
     
 .menu {
@@ -200,32 +201,27 @@ textarea::placeholder {
     background-color: #5783BC; /*cor do botao*/
     cursor: pointer;
     border-radius: 22px;
-    margin-bottom: 10px;
-    margin-left: 25px;
-    width: 250px;
-    height: 45px;
+    margin-left: 315px;
+    height: 25px;
+    width: 100px;
     font-size: 20px;
     align-items: center;
     display:flex;
     justify-content: center;
 }
+
 .espacamento{
     margin-left: 50px;
 }
 
 /* Estilização básica */
 input[type="date"] {
+    cursor: pointer;
     padding: 5px;
     background-color: #5783BC;
     border: none;
     border-radius: 12px;
     font-size: 16px;
-}
-
-/* Personalize o estilo quando o campo estiver em foco (focus) */
-input[type="date"]:focus {
-    border-color: #AFCDEA;
-    box-shadow: 0 0 5px #AFCDEA;
 }
 
 input[type="text"] {

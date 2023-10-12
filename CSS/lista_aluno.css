@@ -30,8 +30,9 @@
 }
 
 .teste{
-  max-height: 570px; 
+  max-height: 486px; 
   overflow-y: auto; 
+  margin-top:80px;  
 }
 
 table {

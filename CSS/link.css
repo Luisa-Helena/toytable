@@ -14,7 +14,32 @@
     text-decoration: underline;
     text-align: right; 
     margin-right: 15px;
-    font-size:14px ;
-    margin-top: -330px;
+    font-size:16px ;
+    margin-top: -15px;
+    margin-bottom: 15px;
 }
 
+.desativa-aluno {
+    cursor: pointer;
+    color: rgb(0, 0, 0); 
+    text-decoration: underline;
+    text-align: right; 
+    margin-right: 15px;
+    font-size:16px ;
+    margin-top: 20px;
+}
+
+.lista-desativados{
+    cursor: pointer;
+    color: rgb(0, 0, 0); 
+    text-decoration: underline;
+    text-align: right; 
+    margin-right: 15px;
+    font-size:16px ;
+    margin-top: 20px;  
+}
+
+a{
+    color: rgb(0, 0, 0); 
+    text-decoration: underline;
+}
