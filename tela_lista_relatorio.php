@@ -1,21 +1,23 @@
+<?php require_once "conexao.php";
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Relatório </title>
+    <title> Listagem de alunos </title>
 
-    <link rel="stylesheet" href="CSS/caixa_dados_professor.css">
+    <link rel="stylesheet" href="CSS/lista_aluno.css">
     <link rel="stylesheet" href="CSS/barra_superior.css">
     <link rel="stylesheet" href="CSS/titulo.css">
     <link rel="stylesheet" href="CSS/link.css">
     <link rel="stylesheet" href="CSS/barra_inferior.css">
     <link rel="stylesheet" href="CSS/toytable.css">
-    <link rel="stylesheet" href="CSS/menu.css">
-    <link rel="stylesheet" href="CSS/turma.css">
     <link rel="stylesheet" href="CSS/mensagem_erro_login.css">
     <link rel="stylesheet" href="CSS/botao_sair.css">
+    <link rel="stylesheet" href="CSS/barra_pesquisa.css">
+    <link rel="stylesheet" href="CSS/caixa_dados_professor.css">
     <link rel="stylesheet" href="CSS/modal_relatorio.css">
 
     <style>
@@ -27,7 +29,6 @@
         @font-face {
             font-family: 'Graduate';
             src: url('Graduate-Regular.ttf') format('truetype');
-            /* Adicione outros formatos de fonte, se necessário */
         }
 
         @font-face {
@@ -39,67 +40,142 @@
             font-family: 'Graduate';
         }
     </style>
-
 </head>
 
 <body>
-
     <div class="header">
         <div class="sair">
             <input type="button" value="Sair" id="botaoSair">
         </div>
-
-        <script>
-            document.getElementById('botaoSair').addEventListener('click', function() {
-
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'encerrar_sessao.php', true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        alert('Você será redirecionado para a página inicial.');
-                        window.location.href = 'home.php';
-                    }
-                };
-                xhr.send();
-            });
-        </script>
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
-        <div class="titulo"> TODOS RELATÓRIOS </div>
+        <div class="titulo"> TODOS RELATÓRIOS  </div>
     </div>
     <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
+    </div>
 
-    <table>         
-            <?php
-            require "conexao.php";
-            session_start();
-            $id_aluno = $_SESSION['id_aluno_sel'];
-            $sql_relatorio = "SELECT cod_professor, cod_fase, descricao, data FROM tb_relatorio WHERE cod_aluno = $id_aluno";
-            $result_relatorio = $con->query($sql_relatorio);
+    <script>
+        document.getElementById('botaoSair').addEventListener('click', function() {
 
-            if ($result_relatorio->num_rows > 0) {
-                while ($row_relatorio = $result_relatorio->fetch_assoc()) {
-                    $descricao = $row_relatorio["descricao"];
-                    $fase = $row_relatorio["cod_fase"];
-                    $professor = $row_relatorio["cod_professor"];
-                    $data = $row_relatorio["data"];
-
-                    echo '<td>';
-                    echo"<button onClick='abrirModal()'> ";
-                    echo '<div class="turma" onClick="abrirModal()">';
-                    echo '<div class="texto">' . $data . '</div>';
-                    echo '</div>';
-                    echo '</td>';
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'encerrar_sessao.php', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert('Você será redirecionado para a página inicial.');
+                    window.location.href = 'home.php';
                 }
-            } else {
-                echo "Nenhum relatório feito ainda para esse aluno";
-            }
-            ?>
-        </tr>
-    </table>
+            };
+            xhr.send();
+        });
+    </script>
 
-<script scr="script.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <div class="form-container">
+        <div class="aluno"> Relatórios -> <?php 
+        $id_aluno = $_SESSION['id_aluno_sel'];  
+        $sql_nome= "SELECT nome FROM tb_aluno WHERE id_aluno = '$id_aluno';";
+         $result_nome = $con->query($sql_nome);  
+         if ($result_nome->num_rows > 0) {
+            $row_nome = $result_nome->fetch_assoc();
+            $nome = $row_nome["nome"]; 
+            } 
+            echo $nome;
+            ?> </div>
+
+        <?php require_once "conexao.php";
+        if (isset($_SESSION['id_aluno_sel'])) {
+            $id_aluno = $_SESSION['id_aluno_sel'];
+            $sql = "SELECT titulo, id_relatorio, descricao FROM tb_relatorio WHERE cod_aluno = '$id_aluno'";
+            $result = $con->query($sql);
+            echo "<table>";
+            echo "<div class='teste'>";
+            echo "<script>";
+            echo "var con = '" . json_encode($con) . "';";
+            echo "</script>";
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $titulo = $row["titulo"];
+                    $id_relatorio = $row["id_relatorio"];
+                    $_SESSION["id_relatorio"] = $id_relatorio;
+                    $descricao = $row["descricao"];
+                    echo "<li>";
+                    echo '<mark data-idRelatorio="' . $id_relatorio . '">' . $titulo . '</mark>';
+                    echo "</li>";
+                }
+            } ?>
+    </div>
+    </div>
+
+<?php
+            echo "</table>";
+        } else {
+            $response = array('success' => false);
+            echo json_encode($response);
+        }
+?>
+</div>
+<div id="relatorioModal" class="modal">
+    <div class="modal-content">
+        <h2><?php echo $titulo ?></h2> <br><br>
+        <div class="texto">
+            <div class="descricao">
+                <p><?php echo $descricao ?><span id="descricao"></span></p>
+            </div>
+        </div>
+            <button id="cancelar">Cancelar</button>
+            <button id="editar">Editar</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elementosMark = document.querySelectorAll('mark');
+        elementosMark.forEach(function(elemento) {
+            elemento.addEventListener('click', function() {
+
+                var idRelatorioSel = this.getAttribute('data-idRelatorio');
+                
+                sessionStorage.setItem('idRelatorioSel', idRelatorioSel);
+
+                var modal = document.getElementById('relatorioModal');
+                modal.style.display = 'block';
+            });
+        });
+
+        document.getElementById('cancelar').addEventListener('click', function() {
+            var modal = document.getElementById('relatorioModal');
+            modal.style.display = 'none';
+        });
+
+        document.getElementById('editar').addEventListener('click', function() {
+            var idRelatorioSel = sessionStorage.getItem('idRelatorioSel'); // Obtenha o ID do aluno da variável de sessão
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'editar_relatorio.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            var data = 'id=' + idRelatorioSel; // Envie o ID no corpo da solicitação
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var response = xhr.responseText;
+                    alert(response); // Exibe a resposta do servidor
+                    var modal = document.getElementById('relatorioModal');
+                    modal.style.display = 'none'; // Fecha o modal
+                    window.location.href = 'tela_lista_relatorio.php';
+
+                }
+            };
+            xhr.send(data);
+        });
+
+    });
+</script>
+
+<div class="botao" onclick="window.location.href = 'form_cadastra_aluno.php';">CADASTRAR ALUNO</div>
+<div class="botao-editar">
+    <input type="button" value="EDITAR TURMA" onClick="window.location.href = 'tela_editar_turma.php';">
+</div>
+<div class="botao-voltar" onclick="window.location.href = 'tela_turma.php';">VOLTAR</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
+
 </html>

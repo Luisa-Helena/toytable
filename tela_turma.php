@@ -114,7 +114,6 @@ require "conexao.php"; ?>
             </script>
 
 </body>
-
 </html>
 
 <?php

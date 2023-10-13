@@ -83,7 +83,6 @@ if (isset($_SESSION['professor_id'])) {
         </div>
         <script>
             document.getElementById('botaoSair').addEventListener('click', function() {
-
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'encerrar_sessao.php', true);
                 xhr.onreadystatechange = function() {
@@ -96,7 +95,6 @@ if (isset($_SESSION['professor_id'])) {
             });
         </script>
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
-
     </div>
     <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>

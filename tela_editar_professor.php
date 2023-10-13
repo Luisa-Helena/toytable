@@ -68,59 +68,6 @@
         setTimeout(removerMensagemErro, 2500);
     </script>
 
-
-<!--FUNÇÃO VER SENHA-->
-<script>
-        function verSenha() {
-            var novaSenhaInput = $('#nova_senha');
-            var tipoNovaSenha = novaSenhaInput.attr('type');
-            var imagemIcone = $('.ver-senha-icon-nova');
-            
-            if (tipoNovaSenha === 'password') {
-                novaSenhaInput.attr('type', 'text');
-                imagemIcone.attr('src', 'senha_visivell_nova.png');
-                imagemIcone.attr('alt', 'Senha Visível');
-            } else {
-                novaSenhaInput.attr('type', 'password');
-                imagemIcone.attr('src', 'senha_oculta_nova.png');
-                imagemIcone.attr('alt', 'Senha Oculta');
-            }
-        }
-
-        function verSenha2() {
-            var confirmaSenhaInput = $('#confirma_senha');
-            var tipoConfirmaSenha = confirmaSenhaInput.attr('type');
-            var imagemIcone = $('.ver-senha-icon-confirma');
-            
-            if (tipoConfirmaSenha === 'password') {
-                confirmaSenhaInput.attr('type', 'text');
-                imagemIcone.attr('src', 'senha_visivell.png');
-                imagemIcone.attr('alt', 'Senha Visível');
-            } else {
-                confirmaSenhaInput.attr('type', 'password');
-                imagemIcone.attr('src', 'senha_oculta.png');
-                imagemIcone.attr('alt', 'Senha Oculta');
-            }
-        }
-
-        function verSenha3() {
-            var atualSenhaInput = $('#atual_senha');
-            var tipoSenhaAtual = atualSenhaInput.attr('type');
-            var imagemIcone = $('.ver-senha-icon-atual');
-            
-            if (tipoSenhaAtual === 'password') {
-                atualSenhaInput.attr('type', 'text');
-                imagemIcone.attr('src', 'senha_visivell.png');
-                imagemIcone.attr('alt', 'Senha Visível');
-            } else {
-                atualSenhaInput.attr('type', 'password');
-                imagemIcone.attr('src', 'senha_oculta.png');
-                imagemIcone.attr('alt', 'Senha Oculta');
-            }
-        }
-    </script>
-
-
 <!--Função de limpar-->
 <script>
         function limparCampos() {
@@ -128,7 +75,6 @@
             document.getElementById('cpf').value = '';
             document.getElementById('email').value = '';
             document.getElementById('telefone').value = '';
-            document.getElementById('senha').value = '';
             // Limpar outros campos do formulário aqui, se houver
         }
     </script>

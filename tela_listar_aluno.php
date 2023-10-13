@@ -42,7 +42,6 @@ $teste="";
             font-family: 'Graduate';
         }
     </style>
-
 </head>
 
 <body>
@@ -51,21 +50,6 @@ $teste="";
         <div class="sair">
             <input type="button" value="Sair" id="botaoSair">
         </div>
-
-        <script>
-            document.getElementById('botaoSair').addEventListener('click', function() {
-
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'encerrar_sessao.php', true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        alert('Você será redirecionado para a página inicial.');
-                        window.location.href = 'home.php';
-                    }
-                };
-                xhr.send();
-            });
-        </script>
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
     </div>
     <br><br><br><br><br><br>
@@ -74,57 +58,12 @@ $teste="";
     <div class="form-container">
         <div class="aluno"> ALUNOS </div>
         <div class="search-box" id="search-box">
-            <input type="text" id="search-text" class="search-text" placeholder="Pesquisar" oninput="" >
+            <input type="text" id="search-text" class="search-text" placeholder="Pesquisar">
             
             <a href="#" class="search-button" id="search-button">
                 <img src="CSS/imagens/lupa.svg" alt="lupa.svg" height="13" width="13">
             </a>
         </div>
-
-        <!-- FAZ COM QUE A BARRA DE PESQUISA APAREÇA E  DESAPAREÇA  -->
-        <script>
-            const searchBox = document.querySelector('.search-box');
-            const searchInput = document.querySelector('.search-text');
-            const searchButton = document.querySelector('.search-button');
-
-            searchInput.addEventListener('focus', function() {
-                searchBox.classList.add('active');
-            });
-            document.addEventListener('click', function(event) {
-                const isClickInsideSearchBox = searchBox.contains(event.target);
-
-                if (!isClickInsideSearchBox) {
-                    searchBox.classList.remove('active');
-                }
-            });
-
-            searchButton.addEventListener('click', function(event) {
-                event.preventDefault();
-                searchInput.focus();
-                searchBox.classList.add('active');
-            });
-        </script>
-
-                        <!-- FUNÇÃO PARA EXIBIR O RESULTADO DA BUSCA -->
-
-<script>
-    // Pega a string da query da URL
-    const queryString = window.location.search;
-
-    const params = new URLSearchParams(queryString);
-
-    const idTurmaSel = params.get("idTurmaSel");
-
-    console.log(idTurmaSel);
-
-
-function searchAluno() {
-    var searchText = document.getElementById('search-text').value;
-    var idTurmaSel_var =  idTurmaSel; // Recupere a variável PHP no JavaScript
-    // Redirecione a página com os parâmetros de consulta
-    window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel_var + '&searchText=' + searchText;
-}
-</script>
 
 <!-- 
 <div class="search-results"></div> -->
@@ -160,39 +99,6 @@ function searchAluno() {
     </div>
     </div>
 
-    <!-- TORNA A FRASE CLICAVEL -->
-    <script>
-        document.getElementById('link').addEventListener('click', function() {
-            window.location.href = 'tela_listar_aluno_desativados.php';
-        });
-    </script>
-
-    <!-- FUNÇÃO PARA IR PRA TELA DE RELATÓRIO DO ALUNO CLICADO -->
-    <script>
-        function Aluno(nomeAluno) {
-            if (nomeAluno && nomeAluno.trim() !== '') {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'consulta_aluno.php?nomeAluno=' + encodeURIComponent(nomeAluno), true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            var response = JSON.parse(xhr.responseText);
-                            if (response.success) {
-                                sessionStorage.setItem('id_aluno_sel', response.id_aluno);
-                                sessionStorage.setItem('nome_aluno_sel', response.nome_aluno);
-                                window.location.href = 'tela_relatorio_aluno.php?idAlunoSel=' + response.id_aluno;
-                            }
-                        } else {
-                            alert('Erro na requisição.');
-                        }
-                    }
-                };
-                xhr.send();
-            } else {
-                alert("Erro: Nome da turma inválido.");
-            }
-        }
-    </script>
 <?php
             echo "</table>";
         } else {
@@ -204,11 +110,7 @@ function searchAluno() {
 <div class="menu">
     <?php
     require_once "conexao.php";
-    ?>
-
     
-
-    <?php
     $idTurmaSel = $con->real_escape_string($idTurmaSel);
     $sql = "SELECT t.nome, t.qtd_aluno, t.faixa_etaria, COUNT(a.id_aluno) AS cont_aluno
         FROM tb_turma t
@@ -249,6 +151,115 @@ function searchAluno() {
     <input type="button" value="EDITAR TURMA" onClick="window.location.href = 'tela_editar_turma.php';">
 </div>
 <div class="botao-voltar" onclick="window.location.href = 'tela_turma.php';">VOLTAR</div>
+
+<script>
+    document.getElementById('botaoSair').addEventListener('click', function() {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'encerrar_sessao.php', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert('Você será redirecionado para a página inicial.');
+            window.location.href = 'home.php';
+        }
+    };
+    xhr.send();
+    });
+
+
+    // FAZ COM QUE A BARRA DE PESQUISA APAREÇA E  DESAPAREÇA
+    const searchBox = document.querySelector('.search-box');
+    const searchInput = document.querySelector('.search-text');
+    const searchButton = document.querySelector('.search-button');
+    var searchText = document.getElementById('search-text').value;
+    // searchInput.addEventListener('focus', function() {
+    //     searchBox.classList.add('active');
+    // });
+    // document.addEventListener('click', function(event) {
+    //     const isClickInsideSearchBox = searchBox.contains(event.target);
+
+    //     if (!isClickInsideSearchBox) {
+    //         searchBox.classList.remove('active');
+    //     }
+    // });
+
+    // searchButton.addEventListener('click', function(event) {
+    //     event.preventDefault();
+    //     searchInput.focus();
+    //     searchBox.classList.add('active');
+    // });
+
+    // Pega a string da query da URL
+    const queryString = window.location.search;
+
+    const params = new URLSearchParams(queryString);
+
+    const idTurmaSel = params.get("idTurmaSel");
+
+    console.log(idTurmaSel);
+
+    
+    // FUNÇÃO PARA EXIBIR O RESULTADO DA BUSCA
+    function searchAluno() {
+        var idTurmaSel_var =  idTurmaSel; 
+
+        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel_var;
+        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel_var+ '&searchText=' + searchText;
+
+    }
+
+// Habilitar a busca ao pressionar Enter
+searchInput.addEventListener('keyup', function(event) {
+        if (searchBox.classList.contains('active') && searchText.length > 0) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                searchAluno();
+            }
+        }    
+    });
+
+// Expandir campo de busca
+searchButton.addEventListener('click', function(event) {
+    if (searchBox.classList.contains('active')) {
+        searchAluno();
+    } else {
+        searchBox.classList.add('active');
+    }
+});
+
+
+
+    // TORNA A FRASE CLICAVEL
+    document.getElementById('link').addEventListener('click', function() {
+            window.location.href = 'tela_listar_aluno_desativados.php';
+        });
+
+    // FUNÇÃO PARA IR PRA TELA DE RELATÓRIO DO ALUNO CLICADO
+    function Aluno(nomeAluno) {
+            if (nomeAluno && nomeAluno.trim() !== '') {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'consulta_aluno.php?nomeAluno=' + encodeURIComponent(nomeAluno), true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.success) {
+                                sessionStorage.setItem('id_aluno_sel', response.id_aluno);
+                                sessionStorage.setItem('nome_aluno_sel', response.nome_aluno);
+                                window.location.href = 'tela_relatorio_aluno.php?idAlunoSel=' + response.id_aluno;
+                            }
+                        } else {
+                            alert('Erro na requisição.');
+                        }
+                    }
+                };
+                xhr.send();
+            } else {
+                alert("Erro: Nome da turma inválido.");
+            }
+        }
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
 </html>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

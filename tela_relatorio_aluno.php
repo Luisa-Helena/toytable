@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +39,16 @@
     </style>
 
 </head>
+<script>
+        // Função para remover a mensagem de erro após um período de tempo
+        function removerMensagemErro() {
+            var mensagemErro = document.querySelector('.mensagem-erro');
+            if (mensagemErro) {
+                mensagemErro.style.display = 'none';
+            }
+        }
+        setTimeout(removerMensagemErro, 2500);
+    </script>
 
 <body>
     <div class="header">
@@ -72,22 +83,18 @@
                 <form action="cadastrar_relatorio.php" method="POST">
                     <label for="titulo" style="font-weight: bold; margin-left:15px; margin-top:10px; font-size:20px;">Título:
                     </label>
-                    <input type="text" id="titulo" name="titulo" style="margin-top:10px" required>
-                    <label for="data" style="font-weight: bold; margin-left:50px; margin-top:10px; font-size:20px;">Data:</label>
-                    <input type="date" id="data" name="data" style="margin-top:10px;" required>
+                    <input type="text" id="titulo" name="titulo" style="margin-top:10px" autocomplete="off" required>
                     <div class="campo_texto">
-                        <textarea id="campo_texto" name="campo_texto" required placeholder="Digite o relatório aqui..."></textarea>
+                    <textarea id="campo_texto" name="campo_texto"  autocomplete="off" required placeholder="Digite o relatório aqui..."></textarea>
                     </div>
             </div>
             <div class="campo">
                 <div class="informacao">ALUNO: </div>
                 <div class="informacoes">
-                    <?php session_start();
-                    // var_dump($_SESSION);
+                    <?php   
                     $nome_aluno = $_SESSION['nome_aluno_sel'];
                     echo "<div><span>$nome_aluno</span></div>";   ?>
                 </div>
-                <div class="botao-editar" onclick="window.location.href = 'tela_editar_aluno.php';"> EDITAR </div>
             </div>
             <div class="relatorio"> RELATÓRIO </div>
             <div class="botao">
@@ -106,6 +113,7 @@
             <div class="dados-jogo">TEMPO:
                 <div><span> ......... </span></div>
             </div>
+            
        <!-- Exibir a mensagem de erro caso exista -->
    <?php
         if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
