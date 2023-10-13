@@ -5,14 +5,26 @@
     position: absolute;  
     top: 0;
     left: 0;
-    background-image: url("imagens/foto.png");
-    background-repeat: no-repeat;
-    background-position:left; /* Ajusta a posição horizontal da imagem */
-    background-size: 170px;
-    background-position-y: 115px;
-    background-position-x: 52px;
     font-family: Graduate;
     font-size: 25px; 
+}
+.foto{
+    float:left;
+    width: 170px;
+    height: 170px;
+    margin-top: 135px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.foto-perfil{
+    float:left;
+    width: 170px;
+    height: 170px;
+    margin-top: 135px;
+    margin-left: 50px;
+    cursor: pointer;
+    border-radius: 100%;
 }
 
 .botao-perfil [type="button"]{
@@ -23,7 +35,7 @@
     height: 40px;
     width: 180px;
     background-color: #5783BC;
-    margin-top: 415px;
+    margin-top: 180px;
     margin-bottom: 50px;
     position: relative;
     font-family: Graduate;

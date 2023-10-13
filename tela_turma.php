@@ -1,3 +1,5 @@
+<?php session_start();
+require "conexao.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,6 +69,20 @@
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
 
     <div class="menu">
+    <?php 
+           $id_professor = $_SESSION["professor_id"];
+           $sql_foto="SELECT caminho FROM tb_arquivo WHERE cod_professor = '$id_professor' ORDER BY data_upload DESC LIMIT 1;";
+           $result_foto = $con->query($sql_foto);
+
+           if ($result_foto && $result_foto->num_rows > 0) {
+                $row_foto = $result_foto->fetch_assoc();
+                $path_relativo = $row_foto["caminho"];
+            
+                echo '<img class="foto-perfil" src="' . $path_relativo . '" onclick="window.location.href = \'arquivos/form_upload.php\'">';
+            } else {
+                echo '<img class="foto" src="CSS/imagens/foto.png" onclick="window.location.href = \'arquivos/form_upload.php\'">';
+            }
+            ?>
         <div class="botao-perfil">
             <input type="button" value="MEU PERFIL" onClick="window.location.href = 'tela_principal_professor.php';">
         </div>
@@ -103,8 +119,6 @@
 
 <?php
 require "conexao.php";
-
-session_start();
 // var_dump($_SESSION);
 
    $professor_id = $_SESSION['professor_id'];

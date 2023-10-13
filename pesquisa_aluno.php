@@ -6,9 +6,9 @@ $cod_turma = $_SESSION['id_turma_sel'];
 
 $sql = 'SELECT nome FROM tb_aluno WHERE cod_turma = ? and nome LIKE "%' . $searchText . '%"  ';
 $stmt = $con->prepare($sql);
-$stmt->bind_param('i', $cod_turma);
-$stmt->execute();
-$result = $stmt->get_result();
+            $stmt->bind_param('i', $cod_turma);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
 $response_aluno = [];
 

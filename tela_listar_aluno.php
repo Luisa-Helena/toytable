@@ -1,5 +1,8 @@
-<?php require_once "conexao.php";
-        session_start(); ?>
+<?php 
+require_once "conexao.php";
+session_start(); 
+$teste="";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +74,8 @@
     <div class="form-container">
         <div class="aluno"> ALUNOS </div>
         <div class="search-box" id="search-box">
-            <input type="text" id="search-text" class="search-text" placeholder="Pesquisar">
+            <input type="text" id="search-text" class="search-text" placeholder="Pesquisar" oninput="" >
+            
             <a href="#" class="search-button" id="search-button">
                 <img src="CSS/imagens/lupa.svg" alt="lupa.svg" height="13" width="13">
             </a>
@@ -101,50 +105,41 @@
             });
         </script>
 
+                        <!-- FUNÇÃO PARA EXIBIR O RESULTADO DA BUSCA -->
 
-<!-- FUNÇÃO PARA EXIBIR O RESULTADO DA BUSCA -->
 <script>
-    // debugger;
-// Criei um objeto XMLHttpRequest
-var xhr = new XMLHttpRequest();
+    // Pega a string da query da URL
+    const queryString = window.location.search;
 
-xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
+    const params = new URLSearchParams(queryString);
 
-        var response = JSON.parse(xhr.responseText);
+    const idTurmaSel = params.get("idTurmaSel");
 
-        // Exibe os resultados da pesquisa
-        var searchResults = document.querySelector('.search-results');
-        searchResults.innerHTML = '';
+    console.log(idTurmaSel);
 
-        for (var i = 0; i < response.length; i++) {
-            var aluno = response[i];
-            searchResults.innerHTML += '<li>' + aluno.nome + '</li>';
-        }
 
-        // Exibe a div com os resultados da pesquisa
-        searchResults.style.display = 'block';
-    }
-};
-
-document.querySelector('#search-box').addEventListener('input', function(event) {
-    var searchText = event.target.value;
-
-    if (searchText !== '') {
-        xhr.open('GET', 'pesquisa_aluno.php?searchText=' + encodeURIComponent(searchText), true);
-        xhr.send();
-    }
-});
+function searchAluno() {
+    var searchText = document.getElementById('search-text').value;
+    var idTurmaSel_var =  idTurmaSel; // Recupere a variável PHP no JavaScript
+    // Redirecione a página com os parâmetros de consulta
+    window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel_var + '&searchText=' + searchText;
+}
 </script>
 
-<div class="search-results"></div>
+<!-- 
+<div class="search-results"></div> -->
 
         <?php 
-        if (isset($_GET['idTurmaSel'])) {
+        if (isset($_GET['idTurmaSel'])) {            
             $idTurmaSel = $_GET['idTurmaSel'];
-
+            $searchText = $_GET['searchText']; // Você precisa obter o valor de searchText da URL também.
+            // Construa a consulta SQL com base nos parâmetros fornecidos.
             $sql = "SELECT nome FROM tb_aluno WHERE cod_turma = '$idTurmaSel' and status = 1";
-            $result = $con->query($sql);
+            // Se searchText não estiver vazio, adicione a cláusula WHERE para filtrar por nome.
+            if (!empty($searchText)) {
+                $sql .= " AND nome LIKE '%$searchText%'";
+            }
+            $result = $con->query($sql);        
             echo "<table>";
             echo "<div class='teste'>";
             echo "<script>";
@@ -159,6 +154,7 @@ document.querySelector('#search-box').addEventListener('input', function(event) 
                 }
             } ?>
     </div>
+    
     <div class="lista-desativados">
         <a href="#" id="link">Alunos desativados dessa turma</a>
     </div>
@@ -210,16 +206,7 @@ document.querySelector('#search-box').addEventListener('input', function(event) 
     require_once "conexao.php";
     ?>
 
-    <script>
-        // Pega a string da query da URL
-        const queryString = window.location.search;
-
-        const params = new URLSearchParams(queryString);
-
-        const idTurmaSel = params.get("idTurmaSel");
-
-        console.log(idTurmaSel);
-    </script>
+    
 
     <?php
     $idTurmaSel = $con->real_escape_string($idTurmaSel);
