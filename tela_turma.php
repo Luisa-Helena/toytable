@@ -154,7 +154,7 @@ require "conexao.php";
                                         // Armazene o ID da turma na sessão
                                         sessionStorage.setItem('id_turma_sel', response.id_turma);
                                         // Redirecione para a página de listar alunos com o ID da turma
-                                        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + response.id_turma;
+                                        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + response.id_turma + '&searchText=';
                                     } else {
                                         alert('Turma não encontrada.');
                                     }

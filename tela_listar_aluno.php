@@ -168,10 +168,10 @@ $teste="";
 
 
     // FAZ COM QUE A BARRA DE PESQUISA APAREÇA E  DESAPAREÇA
-    const searchBox = document.querySelector('.search-box');
-    const searchInput = document.querySelector('.search-text');
-    const searchButton = document.querySelector('.search-button');
-    var searchText = document.getElementById('search-text').value;
+    const searchBox = document.getElementById('search-box');
+    const searchInput = document.getElementById('search-text');
+    const searchButton = document.getElementById('search-button');
+    
     // searchInput.addEventListener('focus', function() {
     //     searchBox.classList.add('active');
     // });
@@ -196,21 +196,18 @@ $teste="";
 
     const idTurmaSel = params.get("idTurmaSel");
 
-    console.log(idTurmaSel);
-
     
     // FUNÇÃO PARA EXIBIR O RESULTADO DA BUSCA
     function searchAluno() {
-        var idTurmaSel_var =  idTurmaSel; 
-
-        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel_var;
-        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel_var+ '&searchText=' + searchText;
-
+        const idTurmaSel_var =  idTurmaSel; 
+        const searchText = searchInput.value;
+        const url  = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel_var+ '&searchText=' + searchText;
+        window.location.href = url;
     }
 
 // Habilitar a busca ao pressionar Enter
 searchInput.addEventListener('keyup', function(event) {
-        if (searchBox.classList.contains('active') && searchText.length > 0) {
+        if (searchBox.classList.contains('active') &&  searchInput.value.length > 0) {
             if (event.keyCode === 13) {
                 event.preventDefault();
                 searchAluno();
@@ -227,7 +224,11 @@ searchButton.addEventListener('click', function(event) {
     }
 });
 
-
+document.addEventListener('click', function(event){
+    if(!searchBox.contains(event.target)){
+        searchBox.classList.remove('active');
+    }
+});
 
     // TORNA A FRASE CLICAVEL
     document.getElementById('link').addEventListener('click', function() {

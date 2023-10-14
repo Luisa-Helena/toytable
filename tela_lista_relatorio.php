@@ -98,7 +98,7 @@ session_start(); ?>
                     $_SESSION["id_relatorio"] = $id_relatorio;
                     $descricao = $row["descricao"];
                     echo "<li>";
-                    echo '<mark data-idRelatorio="' . $id_relatorio . '">' . $titulo . '</mark>';
+                    echo '<mark data-idRelatorio="' . $id_relatorio . '" data-titulo="' . $titulo . '" data-descricao="' . $descricao . '">' . $titulo . '</mark>';
                     echo "</li>";
                 }
             } ?>
@@ -115,10 +115,10 @@ session_start(); ?>
 </div>
 <div id="relatorioModal" class="modal">
     <div class="modal-content">
-        <h2><?php echo $titulo ?></h2> <br><br>
+        <h2 id="modalTitulo"></h2> <br><br>
         <div class="texto">
             <div class="descricao">
-                <p><?php echo $descricao ?><span id="descricao"></span></p>
+                <p id="modalDescricao"><span></span></p>
             </div>
         </div>
             <button id="cancelar">Cancelar</button>
@@ -127,39 +127,47 @@ session_start(); ?>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elementosMark = document.querySelectorAll('mark');
-        elementosMark.forEach(function(elemento) {
-            elemento.addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    var elementosMark = document.querySelectorAll('mark');
+    elementosMark.forEach(function(elemento) {
+        elemento.addEventListener('click', function() {
 
-                var idRelatorioSel = this.getAttribute('data-idRelatorio');
-                
-                sessionStorage.setItem('idRelatorioSel', idRelatorioSel);
+            var idRelatorioSel = this.getAttribute('data-idRelatorio');
+            var titulo = this.getAttribute('data-titulo');
+            var descricao = this.getAttribute('data-descricao');
 
-                var modal = document.getElementById('relatorioModal');
-                modal.style.display = 'block';
-            });
+            sessionStorage.setItem('idRelatorioSel', idRelatorioSel);
+            sessionStorage.setItem('tituloSel', titulo);
+            sessionStorage.setItem('descricaoSel', descricao);
+
+            var modal = document.getElementById('relatorioModal');
+            modal.style.display = 'block';
+
+            var modalTitulo = document.getElementById('modalTitulo');
+            var modalDescricao = document.getElementById('modalDescricao');
+
+            modalTitulo.textContent = titulo;
+            modalDescricao.textContent = descricao;
         });
-
+    });
         document.getElementById('cancelar').addEventListener('click', function() {
             var modal = document.getElementById('relatorioModal');
             modal.style.display = 'none';
         });
 
         document.getElementById('editar').addEventListener('click', function() {
-            var idRelatorioSel = sessionStorage.getItem('idRelatorioSel'); // Obtenha o ID do aluno da variável de sessão
+            var idRelatorioSel = sessionStorage.getItem('idRelatorioSel');
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'editar_relatorio.php', true);
+            xhr.open('POST', 'tela_editar_relatorio.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-            var data = 'id=' + idRelatorioSel; // Envie o ID no corpo da solicitação
+            var data = 'id=' + idRelatorioSel;
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var response = xhr.responseText;
-                    alert(response); // Exibe a resposta do servidor
                     var modal = document.getElementById('relatorioModal');
                     modal.style.display = 'none'; // Fecha o modal
-                    window.location.href = 'tela_lista_relatorio.php';
+                    window.location.href = 'tela_editar_relatorio.php';
 
                 }
             };
