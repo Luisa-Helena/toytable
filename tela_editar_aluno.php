@@ -101,6 +101,7 @@ if ($result->num_rows > 0) {
       });
     </script>
     <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+    <div class="titulo"> EDITAR DADOS DO ALUNO  </div>
   </div>
   <div class="footer">Email para contato: toytable2023@gmail.com</div>
   <br><br><br><br><br><br>
@@ -154,6 +155,10 @@ if ($result->num_rows > 0) {
                 window.location.href = 'tela_edita_aluno.php';
             });
 
+
+            var idTurmaSel = <?php echo $_SESSION['id_turma_sel']; ?>;
+            var searchText = "";
+
             document.getElementById('sim').addEventListener('click', function() {
                 // Execute a solicitação AJAX para o arquivo PHP
                 var xhr = new XMLHttpRequest();
@@ -164,12 +169,14 @@ if ($result->num_rows > 0) {
                         var response = xhr.responseText;
                         alert(response); // Exibe a resposta do servidor
                         document.getElementById('modal').style.display = 'none'; 
-                        window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';
+                        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel + '&searchText=' + searchText;
                     }
                 };
                 xhr.send();
             });
-        </script>
+</script>
+
+
       <div class="form-group">
         <input type="submit" style="margin-top:100px; width: 197px;height:10;text-align: center;" value="ATUALIZAR DADOS">
         <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">

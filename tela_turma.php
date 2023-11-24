@@ -94,7 +94,6 @@ require "conexao.php"; ?>
         </div>
     </div>
     </div>
-
     <table>
         <tr>
             <td>
@@ -172,11 +171,6 @@ require "conexao.php";
 <?php
             echo '</td>';
         }
-    } else {
-        echo "Nenhuma turma encontrada para este professor.";
     }
-
-
 echo "</tr></table>";
-
 ?>

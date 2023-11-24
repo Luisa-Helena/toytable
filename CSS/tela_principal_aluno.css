@@ -18,11 +18,11 @@
 
 .banner-jogo{
     position: relative;
-    width:285px;
+    width:245px;
     margin: 0 80px;
     position: relative;
     border-radius: 22px;
-    height: 400px;
+    height: 360px;
     top:-5px;
     background-color: #3E5F8A;
     display: flex;
@@ -33,8 +33,10 @@
 
 .capa-jogo{
     margin-top: 20px;
-    width:250px;
-    height: 240px;
+    width:220px;
+    height: 210px;
+    border-radius: 22px;
+
 }
 
 .botao1 [type="button"]{
@@ -85,6 +87,7 @@
     display: flex;
     flex-direction: row; 
     font-size: 20px;
+    border-right: 500px;
 }
 
 .informacoes div {

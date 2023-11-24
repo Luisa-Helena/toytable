@@ -63,7 +63,7 @@
 
 <div class="header">
 <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'" >
-<div class="titulo">CADASTRO </div>
+<div class="titulo">CADASTRAR TURMA </div>
 </div>
 <div class="footer">Email para contato: toytable2023@gmail.com</div>
    <br><br><br><br><br><br>
@@ -82,7 +82,6 @@
         <label for="faixa_etaria">Faixa Etária:</label><br>
         <select id="faixa_etaria" name="faixa_etaria" required autocomplete="off">
             <option value="selected"> Selecione uma faixa etária</option>
-            <option value="1-3 anos">1-3 anos</option>
             <option value="4-5 anos">4-5 anos</option>
             <option value="6 anos">6 anos</option>
         </select>
@@ -99,7 +98,7 @@
       <div class="form-group">
       <input type="submit" style="width: 197px;height:10;text-align: center;" value="CADASTRAR">
       <input type="button" style="width: 197px;height:10;text-align: center;" value="LIMPAR" onClick="limparCampos()">
-      <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR AO INÍCIO" onclick="window.location.href = 'home.php';">
+      <input type="button" style="width: 398px;height:10;text-align: center;" value="VOLTAR" onclick="window.location.href = 'tela_turma.php';">
   </div>
     </form>
   </div>

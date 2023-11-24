@@ -25,7 +25,7 @@ if ($row_titulo['count'] > 0) {
     $resultado = mysqli_query($con, $sql);
 
     if ($resultado == true) {
-        header("Location: tela_listar_aluno.php?idTurmaSel=" . $_SESSION['id_turma_sel']);
+        header("Location: tela_lista_relatorio.php");
     
     } else {
         echo "Erro no cadastro";

@@ -124,6 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var modal = document.getElementById('alunoModal');
         modal.style.display = 'none';
     });
+
+    var idTurmaSel = <?php echo $_SESSION['id_turma_sel']; ?>;
+    var searchText = ""; // Defina o valor desejado para searchText
     
     document.getElementById('sim').addEventListener('click', function() {
     var idAlunoSel = sessionStorage.getItem('idAlunoSel'); // Obtenha o ID do aluno da variável de sessão
@@ -132,20 +135,22 @@ document.addEventListener('DOMContentLoaded', function() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     var data = 'id=' + idAlunoSel; // Envie o ID no corpo da solicitação
+    var idTurmaSel = <?php echo $_SESSION['id_turma_sel']; ?>;
+    var searchText = ""; // Defina o valor desejado para searchText
+
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var response = xhr.responseText;
             alert(response); // Exibe a resposta do servidor
             var modal = document.getElementById('alunoModal');
             modal.style.display = 'none'; // Fecha o modal
-            window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';
-
-        }
-    };
+        window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel + '&searchText=' + searchText;
+}
+    }
+    });
     xhr.send(data);
 });
 
-});
 </script>
 
 <?php
@@ -168,7 +173,18 @@ document.addEventListener('DOMContentLoaded', function() {
      -->
     <input type="button" value="EDITAR TURMA" onClick="window.location.href = 'tela_editar_turma.php';">
 </div>
-<div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>
+<div class="botao-voltar" onclick="voltarParaTelaListarAluno();"> VOLTAR</div>
+
+<script>
+function voltarParaTelaListarAluno() {
+    var idTurmaSel = <?php echo $_SESSION['id_turma_sel']; ?>;
+    var searchText = ""; // Defina o valor desejado para searchText
+    
+    // Redirecione o usuário para a URL desejada
+    window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel + '&searchText=' + searchText;
+}
+</script>
+
 
 </body>
 </html>

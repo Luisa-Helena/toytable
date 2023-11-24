@@ -13,7 +13,7 @@ if ($result && $result->num_rows > 0) {
 }
 
 $sql_turma = "SELECT nome FROM tb_turma WHERE id_turma='$id_turma'";
-$result_turma = $con->query($sql);
+$result_turma = $con->query($sql_turma);  
 
 if ($result_turma && $result_turma->num_rows > 0) {
     $row_turma = $result_turma->fetch_assoc();
@@ -100,19 +100,13 @@ if ($result_turma && $result_turma->num_rows > 0) {
     <div class="banner-jogo">
         <img src='CSS/imagens/capa-jogo1.png' class='capa-jogo'>
         <div class="botao1">
-            <input type="button" value="JOGAR" onclick="window.location.href = 'form_edita_senha.php';">
+            <input type="button" value="JOGAR" onclick="window.location.href = 'jump_cat/index.html';">
         </div>
     </div>
     <div class="banner-jogo">
-        <img src='CSS/imagens/capa-jogo1.png' class='capa-jogo'>
+        <img src='CSS/imagens/capa-jogo2.jpeg' class='capa-jogo'>
         <div class="botao2">
-            <input type="button" value="JOGAR" onclick="window.location.href = 'form_edita_senha.php';">
-        </div>
-    </div>
-    <div class="banner-jogo">
-        <img src='CSS/imagens/capa-jogo1.png' class='capa-jogo'>
-        <div class="botao3">
-            <input type="button" value="JOGAR" onclick="window.location.href = 'form_edita_senha.php';">
+            <input type="button" value="JOGAR" onclick="window.location.href = 'queen_bee/index.html';">
         </div>
     </div>
 </div>

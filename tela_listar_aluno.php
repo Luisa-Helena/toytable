@@ -51,6 +51,7 @@ $teste="";
             <input type="button" value="Sair" id="botaoSair">
         </div>
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+        <div class="titulo"> INFORMAÇÕES DA TURMA </div>
     </div>
     <br><br><br><br><br><br>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>

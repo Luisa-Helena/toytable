@@ -83,6 +83,7 @@
             });
         </script>
         <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+        <div class="titulo">CADASTRO</div>
     </div>
     <div class="footer">Email para contato: toytable2023@gmail.com</div>
     <br><br><br><br><br><br>

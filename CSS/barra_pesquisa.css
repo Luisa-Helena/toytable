@@ -1,10 +1,10 @@
 .search-box{
     position: absolute;
     top:90px;
-    left:55px;
+    left:45px;
     background:#3E5F8A;
     padding: 10px;
-    height: 25px;
+    height: 18px;
     border-radius: 40px;
     display: flex;
     justify-content: space-between;
@@ -38,13 +38,10 @@
 }
 
 .active .search-text {
-    width: 390px;
+    width: 350px;
     padding: 0 6px;
 }
 
 .active .search-button {
     background: #AFCDEA;
-}
-.highlight {
-    background-color: yellow; /* ou outra cor de destaque */
 }

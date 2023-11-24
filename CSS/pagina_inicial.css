@@ -1,11 +1,11 @@
 .caixa1{
-    width: 450px;
+    width: 475px;
     /* margin: 0 auto; */
     /* position: relative; */
     padding: 40px;
     border-radius: 22px;
     margin-top: 100px;
-    height: 110px;
+    height: 160px;
     float: right;
     margin-right: 95px;
     background-color: #CADFFB;
@@ -13,26 +13,26 @@
     /* margin-bottom: 100px; */
 }
 .caixa2{
-    width: 450px;
+    width: 475px;
     /* margin: 0 auto; */
     /* position: relative; */
     padding: 40px;
     border-radius: 22px;
     margin-top: 30px;
-    height: 110px;
+    height: 160px;
     float: left;
     margin-left: 95px;
     background-color: #CADFFB;
     margin-bottom: 30px;
 }
 .caixa3{
-    width: 450px;
+    width: 475px;
     /* margin: 0 auto; */
     /* position: relative; */
     padding: 40px;
     border-radius: 22px;
     margin-top: 30px; 
-    height: 110px;
+    height: 160px;
     float: right;
     margin-right: 95px;
     background-color: #CADFFB;
@@ -53,11 +53,24 @@
 }
 
 .nos img{
-    border: 13px solid #3E5F8A;
+    border: 7px solid #3E5F8A;
 }
 .nos{
     margin-top: 30px;
     margin-left: 50px;
-    border: 10px;
+    border: 5px;
     margin-left: 200px;
+}
+
+.mesa img{
+    border: 7px solid #3E5F8A;
+}
+.mesa{
+    margin-top: 70px;
+    margin-left: 1100px;
+}
+
+
+.justificado {
+    text-align: justify;
 }

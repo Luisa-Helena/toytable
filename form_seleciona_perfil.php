@@ -32,7 +32,6 @@
     font-family: 'Graduate';
 }
 </style>
-
     </head>
     <body>
   <div class="header"> 

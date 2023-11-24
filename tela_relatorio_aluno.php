@@ -103,7 +103,7 @@
             </form>
         </div>
         <div class="menu">
-            <div class="dados"> DADOS DO ALUNO </div>
+            <!-- <div class="dados"> DADOS DO ALUNO </div>
             <div class="dados-jogo">FASE:
                 <div><span> ......... </span></div>
             </div>
@@ -112,7 +112,7 @@
             </div>
             <div class="dados-jogo">TEMPO:
                 <div><span> ......... </span></div>
-            </div>
+            </div> -->
             
        <!-- Exibir a mensagem de erro caso exista -->
    <?php
@@ -122,10 +122,17 @@
         }
         ?>
             <div class="botao-escuro" onclick="window.location.href = 'tela_lista_relatorio.php';"> TODOS RELATÓRIOS </div>
-            <div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>
+            <div class="botao-voltar" onclick="voltarParaTelaListarAluno();"> VOLTAR</div>
 
-        </div>
-
+<script>
+function voltarParaTelaListarAluno() {
+    var idTurmaSel = <?php echo $_SESSION['id_turma_sel']; ?>;
+    var searchText = ""; // Defina o valor desejado para searchText
+    
+    // Redirecione o usuário para a URL desejada
+    window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel + '&searchText=' + searchText;
+}
+</script>
     </div>
 </body>
 

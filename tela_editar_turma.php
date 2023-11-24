@@ -99,6 +99,7 @@ if ($result->num_rows > 0) {
       });
     </script>
     <img src="CSS/imagens/logo (1).png" onclick="window.location.href = 'home.php'">
+    <div class="titulo"> EDITAR DADOS DA TURMA  </div>
   </div>
   <div class="footer">Email para contato: toytable2023@gmail.com</div>
   <br><br><br><br><br><br>
@@ -117,7 +118,7 @@ if ($result->num_rows > 0) {
         <label for="opcoes">Faixa Etária:</label>
         <select id="opcoes" name="opcoes" required>
             <?php
-            $opcoes = array("1-3 anos", "4-5 anos", "6 anos"); 
+            $opcoes = array("4-5 anos", "6 anos"); 
             foreach ($opcoes as $opcao) {
                 if ($opcao === $faixa_etaria) {
                     echo "<option value='$opcao' selected>$opcao</option>";

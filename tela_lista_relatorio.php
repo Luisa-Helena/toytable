@@ -123,6 +123,8 @@ session_start(); ?>
         </div>
             <button id="cancelar">Cancelar</button>
             <button id="editar">Editar</button>
+            <button id="excluir">Excluir</button>
+
     </div>
 </div>
 
@@ -161,27 +163,51 @@ document.addEventListener('DOMContentLoaded', function() {
             xhr.open('POST', 'tela_editar_relatorio.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-            var data = 'id=' + idRelatorioSel;
+            var data = 'id-relatorio=' + idRelatorioSel;
+
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var response = xhr.responseText;
                     var modal = document.getElementById('relatorioModal');
                     modal.style.display = 'none'; // Fecha o modal
-                    window.location.href = 'tela_editar_relatorio.php';
-
+                    window.location.href = `tela_editar_relatorio.php?id-relatorio=${idRelatorioSel}`;
                 }
             };
             xhr.send(data);
         });
 
-    });
+        document.getElementById('excluir').addEventListener('click', function() {
+    var idRelatorioSel = sessionStorage.getItem('idRelatorioSel');
+    
+    // Pergunte para a confirmação antes de excluir
+    var confirmacao = confirm("Tem certeza de que deseja excluir este relatório?");
+    
+    if (confirmacao) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'excluir_relatorio.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+        var id = 'id-relatorio=' + idRelatorioSel; // Correção aqui
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var resposta = xhr.responseText;
+                var modal = document.getElementById('relatorioModal');
+                modal.style.display = 'none'; // Fecha o modal
+                alert('Relatório excluído com sucesso.');
+            }
+        };
+        xhr.send(id);
+    }
+});
+});
+
 </script>
 
-<div class="botao" onclick="window.location.href = 'form_cadastra_aluno.php';">CADASTRAR ALUNO</div>
 <div class="botao-editar">
-    <input type="button" value="EDITAR TURMA" onClick="window.location.href = 'tela_editar_turma.php';">
+    <input type="button" value="EDITAR ALUNO" onClick="window.location.href = 'tela_editar_aluno.php';">
 </div>
-<div class="botao-voltar" onclick="window.location.href = 'tela_turma.php';">VOLTAR</div>
+<div class="botao-voltar" onclick="window.location.href = 'tela_relatorio_aluno.php?idAlunoSel=<?php echo $_SESSION['id_aluno_sel']; ?>';">VOLTAR</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>

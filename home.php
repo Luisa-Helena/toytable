@@ -53,7 +53,12 @@ window.history.pushState(null, null, window.location.href);
     <div class="toytable" onclick="window.location.href = 'home.php'"> TOYTABLE </div>
 <!-- <div class="titulo">CADASTRO</div> -->
 </div>
-<div class="caixa1"></div>
+<div class="caixa1">
+<div class="justificado">
+<b>Sobre o site: <br></b>
+O site é composto pelos os jogos desenvolvidos tendo a capacidade de ser acessados diretamente na mesa interativa ou por meio do próprio site. Além disso, os professores têm à disposição todas as informações relacionadas aos seus alunos e à turma a qual pertencem, incluindo a capacidade de gerar relatórios sobre as atividades realizadas por eles contendo os dados originados dos jogos.
+</div>
+</div>
 <div class="logo">
 <img src="CSS/imagens/logo (1).png" alt="Logo" width="200" height="200">
 
@@ -61,10 +66,23 @@ window.history.pushState(null, null, window.location.href);
 
 <div class="linha"></div>
 <div class="caixa2">
+<div class="justificado">
+<b> Sobre a mesa: <br></b>
+
+A mesa interativa tem o intuito de oferecer uma educação de excelência por meio de abordagens lúdicas, destinada aos alunos. Ela incorpora jogos que visam o aprimoramento das capacidades motoras e cognitivas das crianças. Tendo em sua tecnologia sensores toch e um dispositivo de projeção, conferindo-lhe um diferencial na experiência educativa.
 </div>
+</div>
+<div class="mesa"> <img src="CSS/imagens/esboco.jpeg" alt="Foto da mesa" width="175" height="175"> </div>
+
 <div class="linha"></div>
-<div class="caixa3"></div>
-<div class="nos"> <img src="CSS/imagens/nos.jpg" alt="Foto do grupo" width="175" height="175"> </div>
+<div class="caixa3">
+<div class="justificado">
+<b> Sobre nós: <br> </b>
+
+A ToyTable foi desenvolvida com o propósito de melhorar o processo educativo de crianças com idades entre 4 e 6 anos. Este desenvolvimento se materializou no âmbito do Trabalho de Conclusão do curso desenvolvimento de sistemas realizado na Etec Philadelpho Govêa Netto. Nosso grupo, unido desde o primeiro ano, persistiu nesse trabalho até alcançar esta fase final.
+</div>
+</div>
+<div class="nos"> <img src="CSS/imagens/nos.jpeg" alt="Foto do grupo" width="175" height="175"> </div>
 <div class="footer">Email para contato: toytable2023@gmail.com</div>
    <br><br><br><br><br><br>
  

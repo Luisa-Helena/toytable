@@ -16,10 +16,10 @@
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    width: 700px;
-    height: 800px;
+    width: 550px;
+    height: 450px;
     margin-top:75px;
-    margin-left:635px;
+    margin-left:465px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -32,23 +32,27 @@ button {
 }
 
 #cancelar {
-    background-color: #f44336;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
+#excluir {
+    background-color: red;
+    color: black;
+}
 #editar {
     background-color: #4CAF50;
-    color: white;
+    color: black;
 }
 
 .texto{
     margin-left: 25px;
-    max-height: 735px; 
+    max-height: 400px; 
     overflow-y: auto; 
     /* margin-top:80px;   */
 }
 
 .descricao{
-    width: 635px;
-    height: 650px;
+    width: 500px;
+    height: 400px;
 }

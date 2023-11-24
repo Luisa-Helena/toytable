@@ -24,25 +24,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['user_email'] = $email;
         $user_email = $_SESSION["user_email"];
 
-        $val_status = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ? and status = 0";
-
+        $val_status = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ?";
+        
         $stmt_status = $con->prepare($val_status);
-        $stmt_status->bind_param("s", $user_email);
+        $stmt_status->bind_param("s", $user_email); 
         $stmt_status->execute();
         $result_status = $stmt_status->get_result();
         $row_status = $result_status->fetch_assoc();
-
+        
             $sql_id = "SELECT id_professor from tb_professor where email='$user_email'";
             $result_id = $con->query($sql_id);
         
             if ($result_id && $result_id->num_rows > 0) {
                 $row = $result_id->fetch_assoc();
                 $_SESSION["professor_id"] = $row["id_professor"];      
-                $status="UPDATE tb_professor SET status= 1 where email='$user_email'";
-                $stmt_status = $con->prepare($status);
-                $stmt_status->bind_param("s", $user_email);
-                $stmt_status->execute();
-                $result_status = $stmt_status->get_result();
+                $status="UPDATE tb_professor SET status= 1 where email= ? ";
+                $stmt_update_status = $con->prepare($status);
+                $stmt_update_status->bind_param("s", $user_email);
+                $stmt_update_status->execute();
+                $result_uptade_status = $stmt_update_status->get_result();
             }
                 header("Location: tela_principal_professor.php");
                 exit;

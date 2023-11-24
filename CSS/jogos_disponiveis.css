@@ -7,11 +7,11 @@
 
 .banner-jogo{
     position: relative;
-    width:285px;
+    width:250px;
     margin: 0 80px;
     position: relative;
     border-radius: 22px;
-    height: 400px;
+    height: 350px;
     top:150px;
     background-color: #3E5F8A;
     display: flex;
@@ -21,9 +21,9 @@
 }
 
 .capa-jogo{
-    margin-top: 20px;
-    width:250px;
-    height: 240px;
+    margin-top: 25px;
+    width:220px;
+    height: 210px;
 }
 
 .botao1 [type="button"]{

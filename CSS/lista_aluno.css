@@ -1,11 +1,11 @@
 .form-container{
-    margin-left: 700px;
+    margin-left: 500px;
     /* margin: auto; */
-    max-width: 500px;
+    max-width: 450px;
     position: relative;
     padding: 40px;
     border-radius: 22px;
-    height: 650px;
+    height: 450px;
     top: -5px;
     background-color: #CADFFB;
 }
@@ -14,8 +14,8 @@
     content: '';
     position: absolute;
     background-color: #3E5F8A;
-    width: 575px;
-    height: 725px;
+    width: 525px;
+    height: 525px;
     top: 25px;
     right: 25px;
     border-radius: 22px;
@@ -30,7 +30,7 @@
 }
 
 .teste{
-  max-height: 486px; 
+  max-height: 315px; 
   overflow-y: auto; 
   margin-top:80px;  
 }
@@ -60,19 +60,19 @@ table {
   }
 
 .menu{
-  width: 330px;
-  height: 685px;
+  width: 300px;
+  height: 550px;
   background-color: #CADFFB;
   left: 0;
   margin-left:185px;
   position: absolute;
-  top: 50%;
+  top:375px;
   transform: translate(-50%, -50%);
   background-image: url("imagens/gato.png");
   background-repeat: no-repeat;
-  background-size: 395px;
-  background-position-y: 305px;
-  background-position-x: -80px;
+  background-size: 315px;
+  background-position-y: 250px;
+  background-position-x: -45px;
 }
 
 .botao-editar [type="button"]{
@@ -83,7 +83,7 @@ table {
   cursor: pointer;
   border-radius: 22px;
   float: right;
-  margin-top: -480px;
+  margin-top: -310px;
   margin-bottom: 10px;
   margin-right: 125px;
   width: 250px;
@@ -96,18 +96,18 @@ table {
 
 .dados{
   cursor:default;
-  margin-top: 60px;
-  margin-left: 30px;
+  margin-top: 40px;
+  margin-left: 15px;
 }
 
-.botao{
+.botao{ /*cadastrar aluno */
   color: #000;
   font-family: Graduate;
   background-color: #5783BC; /*cor do botao*/
   cursor: pointer;
   border-radius: 22px;
   float: right;
-  margin-top: -550px;
+  margin-top: -385px;
   margin-bottom: 10px;
   margin-right: 125px;
   width: 250px;
@@ -125,7 +125,7 @@ table {
   cursor: pointer;
   border-radius: 22px;
   float: right;
-  margin-top: -410px;
+  margin-top: -235px;
   margin-bottom: 10px;
   margin-right: 125px;
   width: 250px;

@@ -4,7 +4,7 @@
     position: relative;
     padding: 40px;
     border-radius: 22px;
-    height: 500px;
+    height: 450px;
     top:-5px;
     background-color: #CADFFB;
 }
@@ -14,7 +14,7 @@
     position: absolute;
     background-color: #3E5F8A;
     width: 475px;
-    height: 575px;
+    height: 525px;
     top: 25px;
     right: 25px;
     border-radius: 22px;

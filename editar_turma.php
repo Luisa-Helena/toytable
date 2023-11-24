@@ -25,7 +25,7 @@ require "conexao.php";
                     $stmt->bind_param("siisi", $nome, $id_professor, $qtd_aluno, $faixa_etaria, $id_turma);
                     
                     if ($stmt->execute()) {
-                        header("Location: tela_principal_professor.php");
+                        header("Location: tela_turma.php");
                         exit;
                     } else {  
                         // Erro na atualização
@@ -33,5 +33,5 @@ require "conexao.php";
                         $_SESSION['mensagemErro'] = 'Erro na atualização das informações.';
                     }
     }
-}
+} 
 ?>

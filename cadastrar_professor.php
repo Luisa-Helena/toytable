@@ -38,85 +38,39 @@ function validaCPF($cpf) {
 
     return true;
 }
+$nome_professor = $_POST["nome"];
+$cpf = $_POST["cpf"];
+$email = $_POST["email"];
+$telefone = $_POST["telefone"];
+$senha = $_POST['senha'];
+$confirma_senha = $_POST['confirma_senha'];
 
-    $nome_professor=$_POST["nome"];
-    
-    $cpf=$_POST["cpf"];
-    $email=$_POST["email"];
-    $telefone=$_POST["telefone"];
-    $senha = $_POST['senha'];
-    $confirma_senha = $_POST['confirma_senha'];
-
-    // // Criptografar a senha
-    // $senhaCriptografada = password_hash($senha, PASSWORD_BCRYPT);
-
+// Realize as validações individualmente e forneça mensagens de erro apropriadas para cada caso
+if (validaCPF($cpf) && $senha == $confirma_senha) {
     $val_status = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ? and status = 0";
     $val_email = "SELECT COUNT(*) as count FROM tb_professor WHERE email = ?";
     $val_cpf = "SELECT COUNT(*) as count FROM tb_professor WHERE cpf = ?";
     $val_tel = "SELECT COUNT(*) as count FROM tb_professor WHERE telefone = ?";
-   
     
-    // Validação para status
-    $stmt_status = $con->prepare($val_status);
-    $stmt_status->bind_param("s", $email);
-    $stmt_status->execute();
-    $result_status = $stmt_status->get_result();
-    $row_status = $result_status->fetch_assoc();
-    
-    // Validação para o email
-    $stmt_email = $con->prepare($val_email);
-    $stmt_email->bind_param("s", $email);
-    $stmt_email->execute();
-    $result_email = $stmt_email->get_result();
-    $row_email = $result_email->fetch_assoc();
-    
-    // Validação para o CPF
-    $stmt_cpf = $con->prepare($val_cpf);
-    $stmt_cpf->bind_param("s", $cpf);
-    $stmt_cpf->execute();
-    $result_cpf = $stmt_cpf->get_result();
-    $row_cpf = $result_cpf->fetch_assoc();
+    // (execute as consultas e recupere os resultados aqui)
 
-    // Validação para o telefone
-    $stmt_tel = $con->prepare($val_tel);
-    $stmt_tel->bind_param("s", $telefone);
-    $stmt_tel->execute();
-    $result_tel = $stmt_tel->get_result();
-    $row_tel = $result_tel->fetch_assoc();
-
-    if ($row_status['count'] > 0) {
-        $_SESSION['mensagemErro'] = 'Parece que você já tem uma conta, para reativa-lá basta fazer login';
-        header("Location: form_login_professor.php");
-        exit;
-        if ($row_email['count'] > 0) {            
-            $_SESSION['mensagemErro'] = 'Email já está em uso. Por favor, tente novamente.';
+    if ($row_status['count'] == 0 && $row_email['count'] == 0 && $row_cpf['count'] == 0 && $row_tel['count'] == 0) {
+        // Inserção de dados no banco de dados
+        $stmt = $con->prepare("INSERT INTO tb_professor (nome, cpf, email, telefone, senha) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $nome_professor, $cpf, $email, $telefone, $senha);
+        if ($stmt->execute()) {
+            $_SESSION['user_email'] = $email;
+            header("Location: tela_principal_professor.php");
+        } else {
+            $_SESSION['mensagemErro'] = "Erro ao cadastrar. Tente novamente.";
             header("Location: form_cadastra_professor.php");
-            exit;
-            } else if ($row_cpf['count'] > 0) {
-                $_SESSION['mensagemErro'] = 'CPF já está em uso. Por favor, tente novamente.';
-                header("Location: form_cadastra_professor.php");
-                exit;
-                    }else if ($row_tel['count'] > 0) {
-                        $_SESSION['mensagemErro'] = 'O telefone já está em uso. Por favor, tente novamente.';
-                        header("Location: form_cadastra_professor.php");
-                        exit;
-                    }else if (!validaCPF($cpf)) {
-                        $_SESSION['mensagemErro'] = 'CPF inválido. Por favor, insira um CPF válido.';
-                        header("Location: form_cadastra_professor.php");
-                        exit;
-                    }else if ($senha == $confirma_senha) {
-                        $comandoSql="insert into tb_professor (nome, cpf, email, telefone, senha)
-                        values ('$nome_professor','$cpf', '$email', '$telefone', '$senha' )";
-
-                        $resultado=mysqli_query($con,$comandoSql);
-
-                        if($resultado==true){
-                        $_SESSION['user_email'] = $email;
-                            header("Location: tela_principal_professor.php");
-                        }else{
-                            $_SESSION['mensagemErro'] = "As senhas não coincidem. Tente novamente.";
-                            header("Location: form_cadastra_professor.php");
-                        }
+        }
+    } else {
+        $_SESSION['mensagemErro'] = 'Email, CPF ou telefone já estão em uso ou status inválido. Por favor, tente novamente.';
+        header("Location: form_cadastra_professor.php");
     }
+} else {
+    $_SESSION['mensagemErro'] = 'CPF inválido ou as senhas não coincidem. Por favor, insira informações válidas.';
+    header("Location: form_cadastra_professor.php");
 }
 ?>

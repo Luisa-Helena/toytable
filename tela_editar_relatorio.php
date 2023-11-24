@@ -2,8 +2,10 @@
 session_start();
 require_once "conexao.php";
 
-if (isset($_POST['id'])) {
-    $id_relatorio = $_POST['id'];
+
+if (isset($_GET['id-relatorio'])) {
+    $id_relatorio = intval($_GET['id-relatorio']);
+    $_SESSION['id-relatorio'] = $id_relatorio;
 
     $sql = "SELECT titulo, descricao FROM tb_relatorio WHERE id_relatorio = ?";
 
@@ -18,7 +20,7 @@ if (isset($_POST['id'])) {
     $descricao = $row['descricao'];
     }
 }
-var_dump($id_relatorio);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,9 +106,9 @@ var_dump($id_relatorio);
                 <form action="editar_relatorio.php" method="POST">
                     <label for="titulo" style="font-weight: bold; margin-left:15px; margin-top:10px; font-size:20px;">Título:
                     </label>
-                    <input type="text" id="titulo" name="titulo" style="margin-top:10px" value="<?php $titulo ?>"autocomplete="off" required>
+                    <input type="text" id="titulo" name="titulo" style="margin-top:10px" value="<?php echo $titulo ?> " required>
                     <div class="campo_texto">
-                    <textarea id="campo_texto" name="campo_texto"  autocomplete="off" required placeholder="Digite o relatório aqui..."> <?php $descricao ?></textarea>
+                    <textarea id="campo_texto" name="campo_texto" required placeholder="Digite o relatório aqui..."> <?php echo $descricao ?></textarea>
                     </div>
             </div>
             <div class="campo">
@@ -121,30 +123,29 @@ var_dump($id_relatorio);
             <div class="botao">
                 <input type="submit" style="width: 120px;height:30px;text-align: center;" value="ENVIAR" onClick="abrirModal()">
             </div>
-            </form>
+                    </form>
         </div>
-        <div class="menu">
-            <div class="dados"> DADOS DO ALUNO </div>
-            <div class="dados-jogo">FASE:
-                <div><span> ......... </span></div>
-            </div>
-            <div class="dados-jogo">MORTES:
-                <div><span> ......... </span></div>
-            </div>
-            <div class="dados-jogo">TEMPO:
-                <div><span> ......... </span></div>
-            </div>
+ 
             
        <!-- Exibir a mensagem de erro caso exista -->
    <?php
         if (isset($_SESSION['mensagemErro']) && !empty($_SESSION['mensagemErro'])) {
           echo '<div class="mensagem-erro">' . $_SESSION['mensagemErro'] . '</div>';
           $_SESSION['mensagemErro'] = ''; // Limpa a mensagem de erro da sessão após exibi-la
-        }
+        } 
         ?>
-            <div class="botao-escuro" onclick="window.location.href = 'tela_lista_relatorio.php';"> TODOS RELATÓRIOS </div>
-            <div class="botao-voltar" onclick="window.location.href = 'tela_listar_aluno.php?idTurmaSel=<?php echo $_SESSION['id_turma_sel']; ?>';"> VOLTAR</div>
+            <div class="botao-escuro-editar" onclick="window.location.href = 'tela_lista_relatorio.php';"> TODOS RELATÓRIOS </div>
+            <div class="botao-voltar-editar" onclick="voltarParaTelaListarAluno();"> VOLTAR</div>
 
+<script>
+function voltarParaTelaListarAluno() {
+    var idTurmaSel = <?php echo $_SESSION['id_turma_sel']; ?>;
+    var searchText = ""; // Defina o valor desejado para searchText
+    
+    // Redirecione o usuário para a URL desejada
+    window.location.href = 'tela_listar_aluno.php?idTurmaSel=' + idTurmaSel + '&searchText=' + searchText;
+}
+</script>
         </div>
 
     </div>
